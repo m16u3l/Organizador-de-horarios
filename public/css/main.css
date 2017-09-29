@@ -1,0 +1,16 @@
+
+.h1{
+    align-content : center;
+    align-items: center;
+}
+section {
+    margin: 0;
+    padding: 0;
+}
+
+table tr td{
+    border: 1px solid black;
+}
+table {
+    border-collapse: collapse;
+}

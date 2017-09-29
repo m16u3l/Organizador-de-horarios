@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/m16u3l/Organizador-de-horarios/issues"
   },
-  "homepage": "https://github.com/m16u3l/Organizador-de-horarios#readme"
+  "homepage": "https://github.com/m16u3l/Organizador-de-horarios#readme",
+  "dependencies": {
+    "express": "^4.16.0",
+    "jquery": "^3.2.1"
+  }
 }
