@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    script(src='scripts/showTable.js')
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Tabla de Organizador
+    meta(name='description', content='Tabla de Organizador')
+    meta(name='author', content='OscarAntezana')
+    link(rel='stylesheet', type='text/css', href='style/css/bootstrap.min.css')
+    nav.container-fluid.navbar.navbar-dark.bg-dark
+      .navbar-header
+        h1.title.navbar-brand Organizador de horarios
+  body(onload='CreateTableFromJSON()')
+    .container-fluid
+      .row
+        .col-md-3
+        .col-md-9
+          #showData.table.table-bordered.table-hover.table-responsive
