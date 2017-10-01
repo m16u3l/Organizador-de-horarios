@@ -3,13 +3,9 @@ var app = express();
 
 var path = require('path');
 
-app.get('/', function (req, res) {
-    res.render('index.jade');
-});
-
 //iniciar html
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'views/index.html'));
 });
 
 //iniciar angular
