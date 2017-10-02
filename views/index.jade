@@ -1,8 +1,100 @@
 extends ./navigation.jade
 block body    
-  body(onload='CreateTableFromJSON()')
+  body
     .container-fluid
       .row
         .col-md-3
+          h2 lista de grupos
         .col-md-9
           #showData.table.table-bordered.table-hover.table-responsive
+            table(border='1', align='center')
+              thead
+                tr
+                  th Hora
+                  th#LU Lunes
+                  th#MA Martes
+                  th#MI Miercoles
+                  th#JU Jueves
+                  th#VI Viernes
+                  th#SA Sabado
+              tbody
+                tr#645
+                  th 6:45 - 8:15
+                  td#LU645
+                  td#MA645
+                  td#MI645
+                  td#JU645
+                  td#VI645
+                  td#SA645
+                tr#815
+                  th.11 8:15 - 9:45
+                  td#LU815
+                  td#MA815
+                  td#MI815
+                  td#JU815
+                  td#VI815
+                  td#SA815
+                tr#945
+                  th 9:45 - 11:15
+                  td#LU945
+                  td#MA945
+                  td#MI945
+                  td#JU945
+                  td#VI945
+                  td#SA945
+                tr#1115
+                  th 11:15 - 12:45
+                  td#LU1115
+                  td#MA1115
+                  td#MI1115
+                  td#JU1115
+                  td#VI1115
+                  td#SA1115
+                tr#1245
+                  th 12:45 - 14:15
+                  td#LU1245
+                  td#MA1245
+                  td#MI1245
+                  td#JU1245
+                  td#VI1245
+                  td#SA1245
+                tr#1415
+                  th 14:15 - 15:45
+                  td#LU1415
+                  td#MA1415
+                  td#MI1415
+                  td#JU1415
+                  td#VI1415
+                  td#SA1415
+                tr#1545
+                  th 15:45 - 17:15
+                  td#LU1545
+                  td#MA1545
+                  td#MI1545
+                  td#JU1545
+                  td#VI1545
+                  td#SA1545
+                tr#1715
+                  th 17:15 - 18:45
+                  td#LU1715
+                  td#MA1715
+                  td#MI1715
+                  td#JU1715
+                  td#VI1715
+                  td#SA1715
+                tr#1845
+                  th 18:45 - 20:15
+                  td#LU1845
+                  td#MA1845
+                  td#MI1845
+                  td#JU1845
+                  td#VI1845
+                  td#SA1845
+                tr#2015
+                  th 20:15 - 21:15
+                  td#LU2015
+                  td#MA2015
+                  td#MI2015
+                  td#JU2015
+                  td#VI2015
+                  td#SA2015
