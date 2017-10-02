@@ -5,7 +5,7 @@ app.use(express.static('public'));
 app.set("view engine","jade");
 
 app.get('/', function (req, res) {
-    res.render('tablaHorario.jade');
+    res.render('index.jade');
 });
 
 app.listen(8080, function () {
