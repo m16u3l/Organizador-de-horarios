@@ -3,6 +3,8 @@ var app = express();
 
 var path = require('path');
 
+app.use(express.static('public'));
+
 //iniciar html
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/index.html'));

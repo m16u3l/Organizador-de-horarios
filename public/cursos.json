@@ -1,0 +1,108 @@
+[
+    {
+        "materia": "Introduccion a la Programacion",
+        "docente": "Leticia Blanco",
+        "numero": 2,
+        "horario": [
+            {
+                "dia": "Martes",
+                "hora": "1715-1845",
+                "aula": "617"
+            },
+            {
+                "dia": "Miercoles",
+                "hora": "1715-1845",
+                "aula": "691B"
+            },
+            {
+                "dia": "Jueves",
+                "hora": "1715-1845",
+                "aula": "624"
+            }
+        ]        
+    },
+    {
+        "materia": "Introduccion a la Programacion",
+        "docente": "Vladimir Costas",
+        "numero": 4,
+        "horario": [
+            {
+                "dia": "Martes",
+                "hora": "945-1115",
+                "aula": "692D"
+            },
+            {
+                "dia": "Miercoles",
+                "hora": "945-1115",
+                "aula": "INFLAB"
+            },
+            {
+                "dia": "Jueves",
+                "hora": "1415-1545",
+                "aula": "691B"
+            }
+        ]        
+    },
+    {
+        "materia": "Introduccion a la Programacion",
+        "docente": "Carla Salazar",
+        "numero": 6,
+        "horario": [
+            {
+                "dia": "Miercoles",
+                "hora": "945-1115",
+                "aula": "612"
+            },
+            {
+                "dia": "Jueves",
+                "hora": "945-1115",
+                "aula": "617C"
+            },
+            {
+                "dia": "Sabado",
+                "hora": "815-945",
+                "aula": "691C"
+            }
+        ]
+        
+    },
+    {
+        "materia": "Redes de Computadoras",
+        "docente": "Jorge Orellana",
+        "numero": 2,
+        "horario": [
+            {
+                "dia": "Lunes",
+                "hora": "945-1115",
+                "aula": "691B"
+            },
+            {
+                "dia": "Martes",
+                "hora": "945-1115",
+                "aula": "691C"
+            },
+            {
+                "dia": "Viernes",
+                "hora": "815-945",
+                "aula": "692B"
+            }
+        ]        
+    },
+    {
+        "materia": "Taller de Base de Datos",
+        "docente": "Marcelo Flores",
+        "numero": 3,
+        "horario": [
+            {
+                "dia": "Lunes",
+                "hora": "645-815",
+                "aula": "690B"
+            },
+            {
+                "dia": "Viernes",
+                "hora": "645-815",
+                "aula": "690B"
+            }
+        ]        
+    }
+]
