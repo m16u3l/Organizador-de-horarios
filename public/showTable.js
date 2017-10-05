@@ -1,53 +1,100 @@
-var la = [
-    {
-        '_id': '59d61628ae033c2054cfe439',
-        'nombre': 'LICENCIATURA EN INGENIERIA INFORMATICA',
-        '__v': 0,
-        'niveles': [{
-            'materias': [{
-                '_id': '59d611d12a986a2630d59787', 'nombre': 'INGLES I', '__v': 0, 'grupos': [{
-                    'horarios': [{ '_id': '59d604cd91652e39b047eac4', 'dia': 'VI', 'hora': '815-945', 'aula': 617, '__v': 0 }],
-                    '__v': 0,
-                    'docente': 'CESPEDES GUIZADA MARIA BENITA',
-                    'nombre': 1, '_id': '59d610701199c63a746a76b0'
-                }]
-            }],
-            '__v': 0,
-            'nivel': 'A',
-            '_id': '59d61565e3c64c37b85c24e5'
-        }
-        ]
-    }
+var materiasPulsadas = [
+	{
+        "materia": "INGLES I",
+        "idMateria": "123",
+		"docente": "CESPEDES GUIZADA MARIA BENITA",
+		"grupo": 1,
+		"horario": [
+			{
+				"dia": "MA",
+				"hora": "645-815",
+				"aula": "617"
+			},
+			{
+				"dia": "MI",
+				"hora": "815-945",
+				"aula": "691D"
+			}
+		]
+	},
+
+	{
+        "materia": "INTRODUCCION A LA PROGRAMACION",
+        "idMateria": "124",
+		"docente": "BLANCO COCA LETICIO",
+		"grupo": 2,
+		"horario": [
+			{
+				"dia": "MA",
+				"hora": "645-815",
+				"aula": "691C"
+			},
+			{
+				"auxiliatura": "ALURRALDE SANCHEZ ANTONIO",
+				"dia": "MI",
+				"hora": "1415-1545",
+				"aula": "691B"
+			},
+			{
+				"dia": "LU",
+				"hora": "1415-1545",
+				"aula": "624"
+			}
+		]
+	}
 ];
-function simularAgregarMaterias(materias) {
-    
-    var nuevalista1 = materias.replace("+","");
-    var nuevalista = nuevalista1.replace("+","");
-    nuevalista.replace(" ","");
-    nuevalista.replace(" ","");
-    materiasObject = JSON.parse(JSON.stringify(nuevalista));
-    console.log("HolA"+materiasObject+"Alo");
-    console.log(materiasObject[0]);
-    console.log(materiasObject[0]["niveles"]);
-    for (materia of materiasObject) {
+
+var materiasAgregadas = [];
+
+function simularAgregarMaterias() {
+    for (materia of materiasPulsadas) {
         agregarMateria(materia);
     }
 }
 
 function agregarMateria(materiaInscrita) {
-    var horario = materiaInscrita["horarios"];
-    //console.log(horario);
-    /*for (hora of horario){
-        console.log(hora);
-        if (hora["auxiliatura"]!= null) {
-            console.log(hora["auxiliatura"]);
-        } else {
-            console.log("hola");
-        }
-    }*/
+    
+    var nombreMateria = materiaInscrita["materia"];
+    var idMateria = "MAT"+materiaInscrita["idMateria"];
+    var horario = materiaInscrita["horario"];
+
+    for (clase of horario){
+        //agrega dentro de la tabla
+        crearWellNote(nombreMateria, idMateria,clase);
+        //agrega en la lista de materias
+        crearBanderaNote(nombreMateria,idMateria);
+        //registra la materia internamente
+        registrarMateria (idMateria);
+    }
+}
+
+function crearWellNote (nombreMateria, idMateria,clase){
+    var idClaseHora = clase["dia"]+ ( clase["hora"].split('-')[0] );
+    var wellHtml =document.createElement('div') ;
+    $(wellHtml).addClass("well-basic");
+    $(wellHtml).addClass(idMateria);
+    $(wellHtml).text(nombreMateria +" - "+clase["aula"]);
+    
+    if (clase["auxiliatura"]=== undefined) {
+        $(wellHtml).addClass("well-note");
+    } else {
+        $(wellHtml).addClass("well-note-auxiliar");
+    }
+
+    $(wellHtml).appendTo($('#'+idClaseHora));
+}
+
+function registrarMateria (idMateria){
+    materiasAgregadas.push(idMateria);
+}
+
+function crearBanderaNote (nombreMateria,idMateria){
 
 }
 
-
+function eliminarMateria(){
+    //elimina la materia internamente 
+    //tambien elimina de la lista y de la tabla
+}
 
 
