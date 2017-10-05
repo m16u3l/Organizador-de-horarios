@@ -16,6 +16,7 @@ var materias = [
                         }
                     ]
                 },
+
                 {
                     "materia": "INTRODUCCION A LA PROGRAMACION",
                     "docente": "BLANCO COCA LETICIO",
@@ -114,3 +115,12 @@ function simularAgregarMaterias (){
 function agregarMateria(materiaInscrita){
     //Aqui se agrega la materia a la tabla
 }
+
+function insertar(lista) {
+}
+
+function modal(results){
+   alert((results));
+   document.getElementById("LU645").innerHTML="textoIdddd";
+    //console.log(inventario.find(encontrarCerezas));
+ };

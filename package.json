@@ -18,6 +18,7 @@
   "homepage": "https://github.com/m16u3l/Organizador-de-horarios#readme",
   "dependencies": {
     "express": "^4.16.0",
-    "jade": "^1.11.0"
+    "jade": "^1.11.0",
+    "mongoose": "^4.12.0"
   }
 }
