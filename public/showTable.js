@@ -106,11 +106,21 @@ var materias = [
 //Simula la agregacion de todas las materias de la lista
 //como si fueran pulsaciones de boton
 function simularAgregarMaterias (){
-    for (i = 0; i<materias.length ; i++){
-        agregarMateria (materias[i]);
+    console.log("Tamanio absoluto "+materias.length);
+    for (materia of materias){
+        agregarMateria (materia);
     }
 }
 
 function agregarMateria(materiaInscrita){
-    //Aqui se agrega la materia a la tabla
+    var horario = materiaInscrita["horario"];
+    for (hora of horario){
+        console.log(hora);
+        if (hora["auxiliatura"]!= null) {
+            console.log(hora["auxiliatura"]);
+        } else {
+            console.log("hola");
+        }
+    }
+    
 }
