@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table,
+        th,
+        td {
+            margin: 10px 0;
+            border: solid 1px #333;
+            padding: 2px 4px;
+            font: 15px;
+            text-align: center;
+        }
+
+        th {
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+    <meta charset="utf-8">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tabla de Organizador</title>
+    <meta name="description" content="Tabla de Organizador">
+    <meta name="author" content="SitePoint">
+
+    <link rel="stylesheet" type="text/css" href="../stylesheets/css/bootstrap.min.css">
+    <!-- Optional Bootstrap theme -->
+    <nav class="container-fluid navbar navbar-dark bg-dark">
+        <div class="navbar-header">
+            <h1 class="title navbar-brand"> Organizador de horarios </h1>
+        </div>
+    </nav>
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <h1>Lista de grupos</h1>
+            </div>
+            <div class="col-md-9">
+                <div id="showData" class="table table-bordered table-hover table-responsive">
+                    <table border="1" align="center">
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th id="LU">Lunes</th>
+                                <th id="MA">Martes</th>
+                                <th id="MI">Miercoles</th>
+                                <th id="JU">Jueves</th>
+                                <th id="VI">Viernes</th>
+                                <th id="SA">Sabado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="645">
+                                <th>6:45-8:15</th>
+                                <td id="LU645"></td>
+                                <td id="MA645"></td>
+                                <td id="MI645"></td>
+                                <td id="JU645"></td>
+                                <td id="VI645"></td>
+                                <td id="SA645"></td>
+                            </tr>
+                            <tr id="815">
+                                <th class="11">8:15-9:45</th>
+                                <td id="LU815"></td>
+                                <td id="MA815"></td>
+                                <td id="MI815"></td>
+                                <td id="JU815"></td>
+                                <td id="VI815"></td>
+                                <td id="SA815"></td>
+                            </tr>
+                            <tr id="0945">
+                                <th>9:45-11:15</th>
+                                <td id="LU945"></td>
+                                <td id="MA945"></td>
+                                <td id="MI945"></td>
+                                <td id="JU945"></td>
+                                <td id="VI945"></td>
+                                <td id="SA945"></td>
+                            </tr>
+                            <tr id="1115">
+                                <th>11:15-12:45</th>
+                                <td id="LU1115"></td>
+                                <td id="MA1115"></td>
+                                <td id="MI1115"></td>
+                                <td id="JU1115"></td>
+                                <td id="VI1115"></td>
+                                <td id="SA1115"></td>
+                            </tr>
+                            <tr id="1245">
+                                <th>12:45-14:15</th>
+                                <td id="LU1245"></td>
+                                <td id="MA1245"></td>
+                                <td id="MI1245"></td>
+                                <td id="JU1245"></td>
+                                <td id="VI1245"></td>
+                                <td id="SA1245"></td>
+                            </tr>
+                            <tr id="1415">
+                                <th>14:15-15:45</th>
+                                <td id="LU1415"></td>
+                                <td id="MA1415"></td>
+                                <td id="MI1415"></td>
+                                <td id="JU1415"></td>
+                                <td id="VI1415"></td>
+                                <td id="SA1415"></td>
+                            </tr>
+                            <tr id="1545">
+                                <th>15:45-17:15</th>
+                                <td id="LU1545"></td>
+                                <td id="MA1545"></td>
+                                <td id="MI1545"></td>
+                                <td id="JU1545"></td>
+                                <td id="VI1545"></td>
+                                <td id="SA1545"></td>
+                            </tr>
+                            <tr id="1715">
+                                <th>17:15-18:45</th>
+                                <td id="LU1715"></td>
+                                <td id="MA1715"></td>
+                                <td id="MI1715"></td>
+                                <td id="JU1715"></td>
+                                <td id="VI1715"></td>
+                                <td id="SA1715"></td>
+                            </tr>
+                            <tr id="1845">
+                                <th>18:45-20:15</th>
+                                <td id="LU1845"></td>
+                                <td id="MA1845"></td>
+                                <td id="MI1845"></td>
+                                <td id="JU1845"></td>
+                                <td id="VI1845"></td>
+                                <td id="SA1845"></td>
+                            </tr>
+                            <tr id="2015">
+                                <th class="text-truncate">20:15-21:15</th>
+                                <td id="LU2015"></td>
+                                <td id="MA2015"></td>
+                                <td id="MI2015"></td>
+                                <td id="JU2015"></td>
+                                <td id="VI2015"></td>
+                                <td id="SA2015"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        console.log("<%= listaMaterias[0].horario[0].dia %>")
+    </script>
+    <script>
+        function borrarMateria(elem){
+            elem.remove();
+        }
+    </script>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <div class="table table-bordered table-hover table-responsive" id="showData">
+                    <h1>Materias añadidas</h1>
+                    <ul class="row list-inline">
+                        <% for (var i in listaMaterias){%>
+                            <li class="col-md-4 text-truncate center-block" style="margin-bottom:20px"> <button class="btn btn-success disabled" onclick="borrarMateria(this)"><%= listaMaterias[i].materia %></li>
+                          <%
+                          for (var j in listaMaterias[i].horario){
+                            var dia=listaMaterias[i].horario[j].dia;
+                            var hora=listaMaterias[i].horario[j].hora.split("-")[0];
+                            %> 
+                            <script> document.getElementById("<%=dia %>" + "<%= hora %>").innerHTML = "<%=listaMaterias[i].materia%>"
+                            document.getElementById("<%=dia %>" + "<%= hora %>").style = "background-color : #66ff66"</script> 
+                            <%
+                          }
+                        } %>
+                      
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
