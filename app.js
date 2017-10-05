@@ -4,9 +4,7 @@ var app = express();
 app.use(express.static('public'));
 app.set("view engine","jade");
 
-app.get('/', function (req, res) {
-    res.render('index.jade');
-});
+app.use(require('./routes/Main.js'));
 
 app.listen(8080, function () {
     console.log("starting");
