@@ -69,12 +69,21 @@ function agregarMateria(materiaInscrita) {
 	}
 }
 
-function crearWellNote(nombreMateria, idMateria, clase) {
-	var idClaseHora = '#' + clase["dia"] + (clase["hora"].split('-')[0]);
-	var wellHtml = document.createElement('div');
-	$(wellHtml).addClass("well-basic");
-	$(wellHtml).addClass(idMateria);
-	$(wellHtml).text(nombreMateria + " - " + clase["aula"]);
+function crearWellNote (nombreMateria, idMateria,clase){
+    var idClaseHora = '#'+clase["dia"]+ ( clase["hora"].split('-')[0] );
+    var wellHtml =document.createElement('div') ;
+    $(wellHtml).addClass("well-basic");
+    $(wellHtml).addClass(idMateria);
+    $(wellHtml).text(nombreMateria +" - "+clase["aula"]);
+    
+    if (clase["auxiliatura"]=== undefined) {
+        $(wellHtml).addClass("well-note");
+    } else {
+        $(wellHtml).addClass("well-note-auxiliar");
+    }
+
+    $(wellHtml).appendTo($(idClaseHora));
+}
 
 	if (clase["auxiliatura"] === undefined) {
 		$(wellHtml).addClass("well-note");
@@ -120,7 +129,24 @@ function registrarMateria(idMateria) {
 }
 
 function crearBanderaNote(nombreMateria, idMateria) {
+	var bandera = document.createElement('li');
+	$(bandera).addClass('col-md-4');
+	$(bandera).addClass('text-truncate');
+	$(bandera).addClass('center-block');
+	$(bandera).addClass('bandera');
+	$(bandera).addClass(idMateria);
 
+	var contenido = document.createElement('button');
+	$(contenido).addClass('btn');
+	$(contenido).addClass('btn-success');
+	$(contenido).addClass('disabled');
+	$(contenido).text(nombreMateria);
+
+	$(bandera).append($(contenido));
+
+	$('#lista-banderas').append($(bandera));
+	//li.col-md-4.text-truncate.center-block(align="center" style='margin-bottom:20px; margin-top:20px')
+	//button.btn.btn-success.disabled= materia.materia 
 }
 
 function eliminarMateria() {
