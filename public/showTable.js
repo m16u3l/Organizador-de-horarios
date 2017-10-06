@@ -1,7 +1,7 @@
-var materiasPulsadas =[
+var materiasPulsadas = [
 	{
-        "materia": "INGLES I",
-        "idMateria": "123",
+		"materia": "INGLES I",
+		"idMateria": "123",
 		"docente": "CESPEDES GUIZADA MARIA BENITA",
 		"grupo": 1,
 		"horario": [
@@ -18,8 +18,8 @@ var materiasPulsadas =[
 		]
 	},
 	{
-        "materia": "INTRODUCCION A LA PROGRAMACION",
-        "idMateria": "124",
+		"materia": "INTRODUCCION A LA PROGRAMACION",
+		"idMateria": "124",
 		"docente": "BLANCO COCA LETICIO",
 		"grupo": 2,
 		"horario": [
@@ -46,28 +46,30 @@ var materiasPulsadas =[
 var materiasAgregadas = [];
 
 function simularAgregarMaterias() {
-    for (materia of materiasPulsadas) {
-        agregarMateria(materia);
-    }
+	for (materia of materiasPulsadas) {
+		agregarMateria(materia);
+	}
 }
 
 function agregarMateria(materiaInscrita) {
-    
-    var nombreMateria = materiaInscrita["materia"];
-    var idMateria = "MAT"+materiaInscrita["idMateria"];
-    var horario = materiaInscrita["horario"];
 
-    for (clase of horario){
-        //agrega dentro de la tabla
-        crearWellNote(nombreMateria, idMateria,clase);
-        
-        //registra la materia internamente
-        registrarMateria (idMateria);
+	var nombreMateria = materiaInscrita["materia"];
+	var idMateria = "MAT" + materiaInscrita["idMateria"];
+	var horario = materiaInscrita["horario"];
+
+	for (clase of horario) {
+		//agrega dentro de la tabla
+		crearWellNote(nombreMateria, idMateria, clase);
+		//agrega en la lista de materias
+		crearBanderaNote(nombreMateria, idMateria);
+		//registra la materia internamente
+		registrarMateria(idMateria);
+
+
 	}
-	//agrega en la lista de materias
-	crearBanderaNote(nombreMateria,idMateria);
 }
 
+<<<<<<< HEAD
 function crearWellNote (nombreMateria, idMateria,clase){
     var idClaseHora = '#'+clase["dia"]+ ( clase["hora"].split('-')[0] );
     var wellHtml =document.createElement('div') ;
@@ -83,12 +85,34 @@ function crearWellNote (nombreMateria, idMateria,clase){
 
     $(wellHtml).appendTo($(idClaseHora));
 }
+=======
+function crearWellNote(nombreMateria, idMateria, clase) {
+	var idClaseHora = '#' + clase["dia"] + (clase["hora"].split('-')[0]);
+	var wellHtml = document.createElement('div');
+	$(wellHtml).addClass("well-basic");
+	$(wellHtml).addClass(idMateria);
+	$(wellHtml).text(nombreMateria + " - " + clase["aula"]);
+>>>>>>> ef55bbbc43dc97d96a0581db93745527ec827d4a
 
-function registrarMateria (idMateria){
-    materiasAgregadas.push(idMateria);
+	if (clase["auxiliatura"] === undefined) {
+		$(wellHtml).addClass("well-note");
+	} else {
+		$(wellHtml).addClass("well-note-auxiliar");
+
+	}
+
+	$(wellHtml).appendTo($(idClaseHora));
+
+	validateBroken(idClaseHora);
 }
 
-function crearBanderaNote (nombreMateria,idMateria){
+function validateBroken(idClaseHora) {
+
+	if ($(idClaseHora).children().length > 1) {
+		$(idClaseHora).addClass('well-broken');
+	}
+}
+function crearBanderaNote(nombreMateria, idMateria) {
 	var bandera = document.createElement('li');
 	$(bandera).addClass('col-md-4');
 	$(bandera).addClass('text-truncate');
@@ -109,9 +133,15 @@ function crearBanderaNote (nombreMateria,idMateria){
 	//button.btn.btn-success.disabled= materia.materia 
 }
 
-function eliminarMateria(){
-    //elimina la materia internamente 
-    //tambien elimina de la lista y de la tabla
+function registrarMateria(idMateria) {
+	materiasAgregadas.push(idMateria);
 }
 
+function crearBanderaNote(nombreMateria, idMateria) {
 
+}
+
+function eliminarMateria() {
+	//elimina la materia internamente 
+	//tambien elimina de la lista y de la tabla
+}
