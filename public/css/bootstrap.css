@@ -2044,13 +2044,13 @@ fieldset[disabled] a.btn {
 }
 
 .btn-success {
-  color: #fff;
-  background-color: #28a745;
-  border-color: #28a745;
+  color: #000;
+  background-color: #66ff66;
+  border-color: #66ff66;
 }
 
 .btn-success:hover {
-  color: #fff;
+  color: #000;
   background-color: #218838;
   border-color: #1e7e34;
 }
@@ -2060,8 +2060,8 @@ fieldset[disabled] a.btn {
 }
 
 .btn-success.disabled, .btn-success:disabled {
-  background-color: #28a745;
-  border-color: #28a745;
+  background-color: #66ff66;
+  border-color: #66ff66;
 }
 
 .btn-success:active, .btn-success.active,

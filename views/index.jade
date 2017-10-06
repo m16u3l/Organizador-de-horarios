@@ -120,8 +120,8 @@ block body
           h1 Materias añadidas
           ul.row.list-inline       
              each materia in listaMaterias
-               li.col-md-4.text-truncate.center-block(style='margin-bottom:20px')
-                 button.btn.btn-success.disabled= materia.materia  
+               li.col-md-4.text-truncate.center-block(align="center" style='margin-bottom:20px; margin-top:20px')
+                 button.btn.btn-success.disabled= materia.materia 
                   each horario in materia.horario
                     - var dia=horario.dia
                     - var hora= horario.hora
