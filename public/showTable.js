@@ -1,4 +1,4 @@
-var materiasPulsadas = [
+var materiasPulsadas =[
 	{
         "materia": "INGLES I",
         "idMateria": "123",
@@ -17,7 +17,6 @@ var materiasPulsadas = [
 			}
 		]
 	},
-
 	{
         "materia": "INTRODUCCION A LA PROGRAMACION",
         "idMateria": "124",
@@ -61,11 +60,12 @@ function agregarMateria(materiaInscrita) {
     for (clase of horario){
         //agrega dentro de la tabla
         crearWellNote(nombreMateria, idMateria,clase);
-        //agrega en la lista de materias
-        crearBanderaNote(nombreMateria,idMateria);
+        
         //registra la materia internamente
         registrarMateria (idMateria);
-    }
+	}
+	//agrega en la lista de materias
+	crearBanderaNote(nombreMateria,idMateria);
 }
 
 function crearWellNote (nombreMateria, idMateria,clase){
@@ -89,7 +89,24 @@ function registrarMateria (idMateria){
 }
 
 function crearBanderaNote (nombreMateria,idMateria){
+	var bandera = document.createElement('li');
+	$(bandera).addClass('col-md-4');
+	$(bandera).addClass('text-truncate');
+	$(bandera).addClass('center-block');
+	$(bandera).addClass('bandera');
+	$(bandera).addClass(idMateria);
 
+	var contenido = document.createElement('button');
+	$(contenido).addClass('btn');
+	$(contenido).addClass('btn-success');
+	$(contenido).addClass('disabled');
+	$(contenido).text(nombreMateria);
+
+	$(bandera).append($(contenido));
+
+	$('#lista-banderas').append($(bandera));
+	//li.col-md-4.text-truncate.center-block(align="center" style='margin-bottom:20px; margin-top:20px')
+	//button.btn.btn-success.disabled= materia.materia 
 }
 
 function eliminarMateria(){

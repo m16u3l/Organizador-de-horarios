@@ -128,19 +128,10 @@ block body
         .col-md-3
         .col-md-9
           h1 Materias añadidas
-          ul.row.list-inline       
-             each materia in listaMaterias
-               li.col-md-4.text-truncate.center-block(align="center" style='margin-bottom:20px; margin-top:20px')
-                 button.btn.btn-success.disabled= materia.materia 
-                  each horario in materia.horario
-                    - var dia=horario.dia
-                    - var hora= horario.hora
-                    - var aula= horario.aula
-                      script.
-                        document.getElementById("#{dia}#{hora.split("-")[0]}").innerHTML = "#{materia.materia}-#{aula}"
-                        
-                      script.
-                        document.getElementById("#{dia}#{hora.split("-")[0]}").style="background-color : #66ff66"
-            
+          ul#lista-banderas.row.list-inline       
+             
+               
+                 
+                  
 
                      
