@@ -69,7 +69,7 @@ function agregarMateria(materiaInscrita) {
 }
 
 function crearWellNote (nombreMateria, idMateria,clase){
-    var idClaseHora = clase["dia"]+ ( clase["hora"].split('-')[0] );
+    var idClaseHora = '#'+clase["dia"]+ ( clase["hora"].split('-')[0] );
     var wellHtml =document.createElement('div') ;
     $(wellHtml).addClass("well-basic");
     $(wellHtml).addClass(idMateria);
@@ -81,7 +81,7 @@ function crearWellNote (nombreMateria, idMateria,clase){
         $(wellHtml).addClass("well-note-auxiliar");
     }
 
-    $(wellHtml).appendTo($('#'+idClaseHora));
+    $(wellHtml).appendTo($(idClaseHora));
 }
 
 function registrarMateria (idMateria){
