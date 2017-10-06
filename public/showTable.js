@@ -69,30 +69,12 @@ function agregarMateria(materiaInscrita) {
 	}
 }
 
-<<<<<<< HEAD
-function crearWellNote (nombreMateria, idMateria,clase){
-    var idClaseHora = '#'+clase["dia"]+ ( clase["hora"].split('-')[0] );
-    var wellHtml =document.createElement('div') ;
-    $(wellHtml).addClass("well-basic");
-    $(wellHtml).addClass(idMateria);
-    $(wellHtml).text(nombreMateria +" - "+clase["aula"]);
-    
-    if (clase["auxiliatura"]=== undefined) {
-        $(wellHtml).addClass("well-note");
-    } else {
-        $(wellHtml).addClass("well-note-auxiliar");
-    }
-
-    $(wellHtml).appendTo($(idClaseHora));
-}
-=======
 function crearWellNote(nombreMateria, idMateria, clase) {
 	var idClaseHora = '#' + clase["dia"] + (clase["hora"].split('-')[0]);
 	var wellHtml = document.createElement('div');
 	$(wellHtml).addClass("well-basic");
 	$(wellHtml).addClass(idMateria);
 	$(wellHtml).text(nombreMateria + " - " + clase["aula"]);
->>>>>>> ef55bbbc43dc97d96a0581db93745527ec827d4a
 
 	if (clase["auxiliatura"] === undefined) {
 		$(wellHtml).addClass("well-note");
