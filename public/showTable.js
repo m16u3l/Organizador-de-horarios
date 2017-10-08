@@ -61,12 +61,13 @@ function agregarMateria(materiaInscrita) {
 		//agrega dentro de la tabla
 		crearWellNote(nombreMateria, idMateria, clase);
 		//agrega en la lista de materias
-		crearBanderaNote(nombreMateria, idMateria);
+		
 		//registra la materia internamente
 		registrarMateria(idMateria);
 
 
 	}
+	crearBanderaNote(nombreMateria, idMateria);
 }
 
 function crearWellNote (nombreMateria, idMateria,clase){
@@ -83,18 +84,6 @@ function crearWellNote (nombreMateria, idMateria,clase){
     }
 
     $(wellHtml).appendTo($(idClaseHora));
-}
-
-	if (clase["auxiliatura"] === undefined) {
-		$(wellHtml).addClass("well-note");
-	} else {
-		$(wellHtml).addClass("well-note-auxiliar");
-
-	}
-
-	$(wellHtml).appendTo($(idClaseHora));
-
-	validateBroken(idClaseHora);
 }
 
 function validateBroken(idClaseHora) {
