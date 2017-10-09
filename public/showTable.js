@@ -61,7 +61,7 @@ function agregarMateria(materiaInscrita) {
 		//agrega dentro de la tabla
 		crearWellNote(nombreMateria, idMateria, clase);
 		//agrega en la lista de materias
-		
+
 		//registra la materia internamente
 		registrarMateria(idMateria);
 
@@ -70,26 +70,29 @@ function agregarMateria(materiaInscrita) {
 	crearBanderaNote(nombreMateria, idMateria);
 }
 
-function crearWellNote (nombreMateria, idMateria,clase){
-    var idClaseHora = '#'+clase["dia"]+ ( clase["hora"].split('-')[0] );
-    var wellHtml =document.createElement('div') ;
-    $(wellHtml).addClass("well-basic");
-    $(wellHtml).addClass(idMateria);
-    $(wellHtml).text(nombreMateria +" - "+clase["aula"]);
-    
-    if (clase["auxiliatura"]=== undefined) {
-        $(wellHtml).addClass("well-note");
-    } else {
-        $(wellHtml).addClass("well-note-auxiliar");
-    }
+function crearWellNote(nombreMateria, idMateria, clase) {
+	var idClaseHora = '#' + clase["dia"] + (clase["hora"].split('-')[0]);
+	var wellHtml = document.createElement('div');
+	$(wellHtml).addClass("well-basic");
+	$(wellHtml).addClass(idMateria);
+	$(wellHtml).text(nombreMateria + " - " + clase["aula"]);
 
-    $(wellHtml).appendTo($(idClaseHora));
+	if (clase["auxiliatura"] === undefined) {
+		$(wellHtml).addClass("well-note");
+	} else {
+		$(wellHtml).addClass("well-note-auxiliar");
+	}
+
+	$(wellHtml).appendTo($(idClaseHora));
+	validateBroken(idClaseHora);
 }
 
 function validateBroken(idClaseHora) {
-
+	console.log($(idClaseHora).children());
 	if ($(idClaseHora).children().length > 1) {
-		$(idClaseHora).addClass('well-broken');
+		for(clase of $(idClaseHora).children()){
+			$(clase).addClass('well-broken');
+		}
 	}
 }
 function crearBanderaNote(nombreMateria, idMateria) {
