@@ -60,13 +60,11 @@ function agregarMateria(materiaInscrita) {
 	for (clase of horario) {
 		//agrega dentro de la tabla
 		crearWellNote(nombreMateria, idMateria, clase);
-		//agrega en la lista de materias
 
 		//registra la materia internamente
 		registrarMateria(idMateria);
-
-
 	}
+	//agrega en la lista de materias
 	crearBanderaNote(nombreMateria, idMateria);
 }
 
@@ -88,19 +86,20 @@ function crearWellNote(nombreMateria, idMateria, clase) {
 }
 
 function validateBroken(idClaseHora) {
-	console.log($(idClaseHora).children());
 	if ($(idClaseHora).children().length > 1) {
 		for(clase of $(idClaseHora).children()){
 			$(clase).addClass('well-broken');
 		}
 	}
 }
+
 function crearBanderaNote(nombreMateria, idMateria) {
 	var bandera = document.createElement('li');
 	$(bandera).addClass('col-md-4');
 	$(bandera).addClass('center-block');
 	$(bandera).addClass('bandera');
 	$(bandera).addClass(idMateria);
+	$(bandera).attr("miNombreClase",idMateria);
 
 	var contenido = document.createElement('div');
 	$(contenido).addClass('btn');
@@ -113,20 +112,21 @@ function crearBanderaNote(nombreMateria, idMateria) {
 	$('#lista-banderas').append($(bandera));
 
 	var botonEliminar = document.createElement('button');
-	$(botonEliminar).addClass(idMateria);
 	$(botonEliminar).addClass('removebtn');
 	$(botonEliminar).addClass('btn-circle');
 	$(contenido).append($(botonEliminar));
 
 	$('.removebtn').on('click',function () {
-		var claseIdMateria = this.className.substr(0, 6);
+		var claseIdMateria = $(this).parent().parent().attr("miNombreClase");
 		$('div').remove('.'+claseIdMateria);	
-		$(this).parent().remove();
-		$('div').removeClass("well-broken"); 
-		validateBroken();  
-		
+		$(this).parent().parent().remove();
+		//aqui se debe barrer para pintar de nuevo los choques
+		//$('div').removeClass("well-broken");
     });
 }
+//tbody
+//  tr 10hijos en total
+//    td 7hijos en total (verificar aqui)
 
 function registrarMateria(idMateria) {
 	materiasAgregadas.push(idMateria);
