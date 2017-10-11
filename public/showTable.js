@@ -43,8 +43,6 @@ var materiasPulsadas = [
 	}
 ];
 
-var materiasAgregadas = [];
-
 function simularAgregarMaterias() {
 	for (materia of materiasPulsadas) {
 		agregarMateria(materia);
@@ -60,9 +58,6 @@ function agregarMateria(materiaInscrita) {
 	for (clase of horario) {
 		//agrega dentro de la tabla
 		crearWellNote(nombreMateria, idMateria, clase);
-
-		//registra la materia internamente
-		registrarMateria(idMateria);
 	}
 	//agrega en la lista de materias
 	crearBanderaNote(nombreMateria, idMateria);
@@ -120,14 +115,29 @@ function crearBanderaNote(nombreMateria, idMateria) {
 		var claseIdMateria = $(this).parent().parent().attr("miNombreClase");
 		$('div').remove('.'+claseIdMateria);	
 		$(this).parent().parent().remove();
-		//aqui se debe barrer para pintar de nuevo los choques
-		//$('div').removeClass("well-broken");
+		limpiarTodosLosChoques();
     });
 }
+
+
 //tbody
 //  tr 10hijos en total
 //    td 7hijos en total (verificar aqui)
+function limpiarTodosLosChoques(){
+	verificarListaTR($('#cuerpoTabla').children());
+}
+function verificarListaTR(listaTR){
+	for (let i = 0; i< listaTR.length-1;i++){
+		verificarListaTD($(listaTR[i]).children());
+	}
+}
 
-function registrarMateria(idMateria) {
-	materiasAgregadas.push(idMateria);
+function verificarListaTD(listaTD){
+	for (let j =0 ;j<listaTD.length-1;j++){
+		if($(listaTD[j]).children().length <=1){
+			$(listaTD[j]).children().each(function eliminarClaseBroken(){
+				$(this).removeClass("well-broken");
+			});
+		}
+	}
 }
