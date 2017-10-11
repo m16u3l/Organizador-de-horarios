@@ -92,7 +92,6 @@ function crearBanderaNote(nombreMateria, idMateria) {
 	var bandera = document.createElement('li');
 	$(bandera).addClass('col-md-4');
 	$(bandera).addClass('center-block');
-	$(bandera).addClass('bandera');
 	$(bandera).addClass(idMateria);
 	$(bandera).attr("miNombreClase",idMateria);
 
@@ -100,9 +99,13 @@ function crearBanderaNote(nombreMateria, idMateria) {
 	$(contenido).addClass('btn');
 	$(contenido).addClass('btn-success');
 	$(contenido).addClass('disabled');
-	$(contenido).text(nombreMateria);
-
+	$(contenido).addClass('bandera');
 	$(bandera).append($(contenido));
+
+	var texto = document.createElement('p');
+	$(texto).addClass('texto-bandera');
+	$(texto).text(nombreMateria);
+	$(contenido).append($(texto));
 
 	$('#lista-banderas').append($(bandera));
 
