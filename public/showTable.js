@@ -120,27 +120,6 @@ function registrarMateria(idMateria) {
 	materiasAgregadas.push(idMateria);
 }
 
-function crearBanderaNote(nombreMateria, idMateria) {
-	var bandera = document.createElement('li');
-	$(bandera).addClass('col-md-4');
-	$(bandera).addClass('text-truncate');
-	$(bandera).addClass('center-block');
-	$(bandera).addClass('bandera');
-	$(bandera).addClass(idMateria);
-
-	var contenido = document.createElement('button');
-	$(contenido).addClass('btn');
-	$(contenido).addClass('btn-success');
-	$(contenido).addClass('disabled');
-	$(contenido).text(nombreMateria);
-
-	$(bandera).append($(contenido));
-
-	$('#lista-banderas').append($(bandera));
-	//li.col-md-4.text-truncate.center-block(align="center" style='margin-bottom:20px; margin-top:20px')
-	//button.btn.btn-success.disabled= materia.materia 
-}
-
 function eliminarMateria() {
 	//elimina la materia internamente 
 	//tambien elimina de la lista y de la tabla
