@@ -1,0 +1,28 @@
+table,
+th,
+td {
+  margin: 10px 0;
+  border: solid 2px #000;
+  padding: 2px 4px;
+  font: 15px;
+  text-align: center;
+}
+th {
+  font-weight: bold;
+  text-align: center;
+}
+.well-basic{
+    border-radius: 10px;
+    padding: 3px;
+    margin-bottom: 5px;
+    color: white;
+}
+.well-note{
+  background-color: rgb(24, 163, 68);
+}
+.well-note-auxiliar{
+  background-color: #E8DE2A;
+}
+.well-broken{
+  background-color: #FF3B3B;
+}
