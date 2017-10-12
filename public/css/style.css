@@ -26,3 +26,21 @@ th {
 .well-broken{
   background-color: #FF3B3B;
 }
+
+button{
+    margin-left: 10px;
+}
+
+.btn-circle {
+    
+    background-image: url("/images/close-circle-512.png");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-color: red;
+    border-radius: 15px;
+    border: 0;
+    height: 20px; 
+    width: 20px; 
+    vertical-align: center;
+    
+}

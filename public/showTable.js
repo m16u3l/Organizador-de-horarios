@@ -98,12 +98,11 @@ function validateBroken(idClaseHora) {
 function crearBanderaNote(nombreMateria, idMateria) {
 	var bandera = document.createElement('li');
 	$(bandera).addClass('col-md-4');
-	$(bandera).addClass('text-truncate');
 	$(bandera).addClass('center-block');
 	$(bandera).addClass('bandera');
 	$(bandera).addClass(idMateria);
 
-	var contenido = document.createElement('button');
+	var contenido = document.createElement('div');
 	$(contenido).addClass('btn');
 	$(contenido).addClass('btn-success');
 	$(contenido).addClass('disabled');
@@ -112,15 +111,23 @@ function crearBanderaNote(nombreMateria, idMateria) {
 	$(bandera).append($(contenido));
 
 	$('#lista-banderas').append($(bandera));
-	//li.col-md-4.text-truncate.center-block(align="center" style='margin-bottom:20px; margin-top:20px')
-	//button.btn.btn-success.disabled= materia.materia 
+
+	var botonEliminar = document.createElement('button');
+	$(botonEliminar).addClass(idMateria);
+	$(botonEliminar).addClass('removebtn');
+	$(botonEliminar).addClass('btn-circle');
+	$(contenido).append($(botonEliminar));
+
+	$('.removebtn').on('click',function () {
+		var claseIdMateria = this.className.substr(0, 6);
+		$('div').remove('.'+claseIdMateria);	
+		$(this).parent().remove();
+		$('div').removeClass("well-broken"); 
+		validateBroken();  
+		
+    });
 }
 
 function registrarMateria(idMateria) {
 	materiasAgregadas.push(idMateria);
-}
-
-function eliminarMateria() {
-	//elimina la materia internamente 
-	//tambien elimina de la lista y de la tabla
 }
