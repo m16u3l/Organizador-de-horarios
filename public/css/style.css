@@ -34,15 +34,17 @@ button{
 .btn-circle {
     
     background-image: url("/images/close-circle-512.png");
-    background-size: 35px;
+    background-size: 15px;
     background-repeat: no-repeat;
     background-color: red;
     border-radius: 15px;
     border: 0;
-    height: 35px; 
-    width: 35px; 
+    height: 15px; 
+    width: 15px; 
     vertical-align: middle;
     display: inline-table;  
+    margin-left: 35px;
+    margin-bottom: 30px;
 }
 
 .bandera{
