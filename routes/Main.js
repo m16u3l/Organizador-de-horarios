@@ -150,11 +150,21 @@ router.get('/',function(req,res) {
 		if (error) {
 			console.log(error);
 		}else{
-			var newArray = JSON.stringify(documento);
-			var regex = new RegExp("\"", "g");
-			var resi = newArray.replace(regex, "'");
+			//obteniendo el primer resultado de la consulta
+			//aqui deberia darme solo 1 resultado
+			//pero me da una lista, ya despues lo cambiaremos
+			//por que debe ser 1 resultado o ninguno
+			var primerResultado = documento[0];
+			
+			//aqui estamos enviando toda la carrera
+			//podemos enviarle a jade un object sin hacer stringify
+			res.render('index.jade', {carrera: primerResultado});
+
+
+			//var regex = new RegExp("\"", "g");
+			//var resi = newArray.replace(regex, "'");
 			//res.render('index.jade',{lista:resi});
-			res.render('index.jade', {"listaMaterias": mat});
+			//res.render('index.jade', {listaMaterias: mat});
 		}
 	});
 });

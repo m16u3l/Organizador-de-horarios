@@ -1,10 +1,19 @@
 extends ./navigation.jade
 block body    
   body
+    // 2 modos de acceso a los elementos de la variable sobre el tag P
+    // p  #{carrera.niveles[0].materias[0].grupos[0].docente}
+    // p!= carrera.niveles[0].materias[0].grupos[0].docente
     .container-fluid
       .row
         .col-md-3
-          h1 Lista de grupos
+          #barraSemestre
+            each nivelPrincipal, i in carrera.niveles
+              button.accordion Nivel #{nivelPrincipal.nivel}
+              .panel
+                | Contenido materias
+                //dentro de este panel deben ir la lista de materias del nivel
+                //revisar cuidadosamente css js para crear cada subnivel del menu
         .col-md-9
           #showData.table.table-bordered.table-hover.table-responsive
             table(border='1', align='center')
@@ -104,7 +113,9 @@ block body
         .col-md-3
         .col-md-9
           h1 Materias añadidas
-          ul#lista-banderas.row.list-inline       
+          ul#lista-banderas.row.list-inline      
+
+    script(src='js/listaSemestre.js') 
              
                
                  
