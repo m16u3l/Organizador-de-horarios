@@ -43,6 +43,14 @@ var materiasPulsadas = [
 	}
 ];
 
+var data = {
+	nivel:"nothin",
+	materia:"nothing",
+	idMateria:"nothin",
+	docente:"nothing",
+	grupo:"nothing"
+}
+
 function simularAgregarMaterias() {
 	for (materia of materiasPulsadas) {
 		agregarMateria(materia);
@@ -144,4 +152,9 @@ function verificarListaTD(listaTD){
 			});
 		}
 	}
+}
+
+function construirData(nombre, id){
+	data[id] = nombre;
+	console.log(data);
 }

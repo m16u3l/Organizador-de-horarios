@@ -9,7 +9,7 @@ block contenido
         .col-md-3
           #barraSemestre
             each nivelPrincipal, i in carrera.niveles
-              button.accordion Nivel #{nivelPrincipal.nivel}
+              button(class="accordion" onclick='construirData("#{nivelPrincipal.nivel}", "nivel")') Nivel #{nivelPrincipal.nivel}
               .panel
                 | Contenido materias
                 //dentro de este panel deben ir la lista de materias del nivel

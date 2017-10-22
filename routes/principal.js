@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost/organizadoraHorarios");
+
+var promise = mongoose.connect('mongodb://localhost/organizadoraHorarios', {
+	useMongoClient: true,
+  });
 
 var router = express();
 
