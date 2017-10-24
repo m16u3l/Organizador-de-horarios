@@ -37,6 +37,7 @@ var Nivel = mongoose.model("Nivel",nivelSchema);
 //carrera
 var carreraSchema = {
 	nombre : String,
+	codigo : String,
 	niveles : Array
 };
 var Carrera = mongoose.model("Carrera",carreraSchema);

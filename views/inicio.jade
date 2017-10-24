@@ -1,0 +1,22 @@
+extends ./navegacion.jade
+block contenido 
+    body.start(onload='sortTable()')
+        link(rel='stylesheet', type='text/css', href='css/filtro-tabla.css')
+        .container-fluid
+            .row
+                .col-md-6
+                    h3.padding-titulo.title.text-center ORGANIZADOR DE HORARIOS PARA LA FACULTAD DE CIENCIA Y TECNOLOGIA (FCYT) DE LA UMSS
+                    input#myInput(type='text', onkeyup='myFunction()', placeholder='Buscar Materia...')
+                    table#myTable
+                            tr.header
+                                th(style='width:70%;') Nombre de Carrera
+                                th(style='width:30%;') Codigo de Carrera
+                                for Carrera in carrera
+                                    tr(class='#{Carrera.codigo}')  
+                                        td(style='background-color: white;') #{Carrera.nombre}
+                                        td(style='background-color: white;') #{Carrera.codigo}
+                    script(src="js/filtro-carrera.js")
+                        
+
+
+                    

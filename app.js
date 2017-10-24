@@ -5,6 +5,7 @@ app.use(express.static('public'));
 app.set("view engine","jade");
 
 app.use(require('./routes/principal.js'));
+app.use(require('./routes/inicio.js'));
 
 app.listen(8080, function () {
     console.log("starting");
