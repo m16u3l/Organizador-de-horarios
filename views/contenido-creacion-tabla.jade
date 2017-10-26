@@ -14,10 +14,19 @@ block contenido
                   h5.mb-0
                     a(data-toggle='collapse', data-parent='#accordion', href='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
                       | Nivel #{nivelPrincipal.nivel}
-                  #collapseOne.collapse.show(role='tabpanel', aria-labelledby='headingOne')
+                  #collapseOne.collapse.hide(role='tabpanel', aria-labelledby='headingOne')
                     each materia, j in nivelPrincipal.materias  
                       .card-block
-                        | #{materia.nombre}
+                        #accordion(role='tablist', aria-multiselectable='true')
+                            .card
+                              #headingTwo.card-header(role='tab')
+                                h5.mb-0
+                                  a(data-toggle='collapse', data-parent='#accordion', href='#collapseTwo', aria-expanded='true', aria-controls='collapseTwo')
+                                    | #{materia.nombre}
+                                #collapseTwo.collapse.hide(role='tabpanel', aria-labelledby='headingTwo')
+                                  each grupo, g in materia.grupos  
+                                    .card-block
+                                      | #{grupo.nombre} - #{grupo.docente}
         .col-md-9
           #showData.table.table-bordered.table-hover.table-responsive
             table(border='1', align='center')
@@ -120,9 +129,3 @@ block contenido
           ul#lista-banderas.row.list-inline      
 
     script(src='js/lista-semestre.js') 
-             
-               
-                 
-                  
-
-                     
