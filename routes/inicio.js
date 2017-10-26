@@ -10,7 +10,7 @@ var router = express();
 
 var Carrera = mongoose.model('Carrera');
 
-router.get('/inicio',function(req,res) {
+router.get('/',function(req,res) {
 	Carrera.find(function (error,documento) {
 		if (error) {
 			console.log(error);
