@@ -1,32 +1,5 @@
-extends ./navegacion.jade
-block contenido   
-  body
-    // 2 modos de acceso a los elementos de la variable sobre el tag P
-    // p  #{carrera.niveles[0].materias[0].grupos[0].docente}
-    // p!= carrera.niveles[0].materias[0].grupos[0].docente
-    .container-fluid
-      .row
-        .col-md-3
-          #accordion(role='tablist', aria-multiselectable='true')
-            each nivelPrincipal, i in carrera.niveles
-              .card
-                #headingOne.card-header(role='tab')
-                  h5.mb-0
-                    a(data-toggle='collapse', data-parent='#accordion', href='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
-                      | Nivel #{nivelPrincipal.nivel}
-                  #collapseOne.collapse.hide(role='tabpanel', aria-labelledby='headingOne')
-                    each materia, j in nivelPrincipal.materias  
-                      .card-block
-                        #accordion(role='tablist', aria-multiselectable='true')
-                            .card
-                              #headingTwo.card-header(role='tab')
-                                h5.mb-0
-                                  a(data-toggle='collapse', data-parent='#accordion', href='#collapseTwo', aria-expanded='true', aria-controls='collapseTwo')
-                                    | #{materia.nombre}
-                                #collapseTwo.collapse.hide(role='tabpanel', aria-labelledby='headingTwo')
-                                  each grupo, g in materia.grupos  
-                                    .card-block
-                                      | #{grupo.nombre} - #{grupo.docente}
+extends barra-materias.jade
+block contenido2
         .col-md-9
           #showData.table.table-bordered.table-hover.table-responsive
             table(border='1', align='center')

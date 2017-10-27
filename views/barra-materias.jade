@@ -1,0 +1,32 @@
+extends ./navegacion.jade
+block contenido   
+  body
+    // 2 modos de acceso a los elementos de la variable sobre el tag P
+    // p  #{carrera.niveles[0].materias[0].grupos[0].docente}
+    // p!= carrera.niveles[0].materias[0].grupos[0].docente
+    .container-fluid
+      .row
+        .col-md-3 
+          h3.h3.text-center.my-3.fixed Lista de Materias
+          .scrollable
+            #accordion(role='tablist', aria-multiselectable='true')
+              each nivelPrincipal, i in carrera.niveles
+                .card
+                  .card-header(role='tab', id = 'heading'+'#{nivelPrincipal.nivel}')
+                    h5.mb-0
+                      .btn.btn-primary(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{nivelPrincipal.nivel}', aria-expanded='true', aria-controls='collapse'+'#{nivelPrincipal.nivel}')
+                        | Nivel #{nivelPrincipal.nivel}
+                    .collapse.hide(role='tabpanel', aria-labelledby='heading'+'#{nivelPrincipal.nivel}', id = 'collapse'+'#{nivelPrincipal.nivel}')
+                      each materia, j in nivelPrincipal.materias  
+                        .card-block
+                          #accordion(role='tablist', aria-multiselectable='true')
+                              .card
+                                .card-header(role='tab', id = 'heading'+'#{materia.codigoMateria}')
+                                  h5.mb-0
+                                    .btn.btn-success(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{materia.codigoMateria}', aria-expanded='true', aria-controls='collapse'+'#{materia.codigoMateria}')
+                                      | #{materia.nombre}
+                                  .collapse.hide(role='tabpanel', aria-labelledby='heading'+'#{materia.codigoMateria}', id = 'collapse'+'#{materia.codigoMateria}')
+                                    each grupo, g in materia.grupos  
+                                      .card-block.btn
+                                        .btn.btn-info #{grupo.nombre} - #{grupo.docente}
+        block contenido2                              
