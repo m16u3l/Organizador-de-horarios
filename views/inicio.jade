@@ -13,7 +13,8 @@ block contenido
                                 th#codigoCarrera.text-center Codigo de Carrera
                                 for Carrera in carrera
                                     tr(class='#{Carrera.codigo}')  
-                                        td.text-center #{Carrera.nombre}
+                                        td.text-center
+                                            a(href='/carrera?carrera=' + '#{Carrera.id}')  #{Carrera.nombre} 
                                         td.text-center #{Carrera.codigo}
                     script(src="js/filtro-carrera.js")
                         

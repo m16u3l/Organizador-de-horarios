@@ -45,21 +45,20 @@ var Carrera = mongoose.model("Carrera",carreraSchema);
 
 // Get - parse
 
-router.get('/',function(req,res) {
-	Carrera.find(function (error,documento) {
-		if (error) {
+router.get('/carrera',function(req,res) {
+	var parametros = [];
+	var id_carrera;
+	if(req.url.indexOf("?")){
+		var url_data = req.url.split("?");
+		var parametros = url_data[1].split("&");
+		var valores = parametros[0].split("=");
+		id_carrera = valores[1];
+	}
+	Carrera.findById(id_carrera,function(err,docs){
+		if (err) {
 			console.log(error);
 		}else{
-			//obteniendo el primer resultado de la consulta
-			//aqui deberia darme solo 1 resultado
-			//pero me da una lista, ya despues lo cambiaremos
-			//por que debe ser 1 resultado o ninguno
-			var primerResultado = documento[0];
-			
-			//aqui estamos enviando toda la carrera
-			//podemos enviarle a jade un object sin hacer stringify
-			res.render('contenido-creacion-tabla.jade', {carrera: primerResultado});
-
+			res.render('contenido-creacion-tabla.jade', {carrera:docs});
 		}
 	});
 });
