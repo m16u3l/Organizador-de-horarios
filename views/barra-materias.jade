@@ -28,5 +28,5 @@ block contenido
                                   .collapse.hide(role='tabpanel', aria-labelledby='heading'+'#{materia.codigoMateria}', id = 'collapse'+'#{materia.codigoMateria}')
                                     each grupo, g in materia.grupos  
                                       .card-block.btn
-                                        .btn.btn-info | Grupo #{grupo.nombre} - #{grupo.docente}
+                                        .btn.btn-info #{grupo.nombre} - #{grupo.docente}
         block contenido2                              
