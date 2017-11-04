@@ -1,5 +1,6 @@
 extends ./navegacion.jade
 block contenido   
+  -function capitalize(s) { return JSON.stringify(s); };
   body
     // 2 modos de acceso a los elementos de la variable sobre el tag P
     // p  #{carrera.niveles[0].materias[0].grupos[0].docente}
@@ -14,7 +15,7 @@ block contenido
                 .card
                   .card-header(role='tab', id = 'heading'+'#{nivelPrincipal.nivel}')
                     h5.mb-0
-                      .btn.btn-primary(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{nivelPrincipal.nivel}', aria-expanded='true', aria-controls='collapse'+'#{nivelPrincipal.nivel}')
+                      .btn.btn-primary(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{nivelPrincipal.nivel}', aria-expanded='true', aria-controls='collapse'+'#{nivelPrincipal.nivel}' onclick="construirData('#{nivelPrincipal.nivel}','nivel')")
                         | Nivel #{nivelPrincipal.nivel}
                     .collapse.hide(role='tabpanel', aria-labelledby='heading'+'#{nivelPrincipal.nivel}', id = 'collapse'+'#{nivelPrincipal.nivel}')
                       each materia, j in nivelPrincipal.materias  
@@ -23,10 +24,14 @@ block contenido
                               .card
                                 .card-header(role='tab', id = 'heading'+'#{materia.codigoMateria}')
                                   h5.mb-0
-                                    .btn.btn-success(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{materia.codigoMateria}', aria-expanded='true', aria-controls='collapse'+'#{materia.codigoMateria}')
+                                    .btn.btn-success(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{materia.codigoMateria}', aria-expanded='true', aria-controls='collapse'+'#{materia.codigoMateria}' onclick="construirData('#{materia.nombre}','materia')" )
                                       | #{materia.nombre}
                                   .collapse.hide(role='tabpanel', aria-labelledby='heading'+'#{materia.codigoMateria}', id = 'collapse'+'#{materia.codigoMateria}')
                                     each grupo, g in materia.grupos  
                                       .card-block.btn
+                                        - var item = grupo.horarios;
                                         .btn.btn-info #{grupo.nombre} - #{grupo.docente}
+                                      label.switch
+                                        input(type='checkbox' id='collapse'+'#{materia.codigoMateria}' name="check")
+                                        span.slider
         block contenido2                              

@@ -51,10 +51,29 @@ var data = {
 	grupo:"nothing"
 }
 
-function simularAgregarMaterias() {
-	for (materia of materiasPulsadas) {
-		agregarMateria(materia);
-	}
+		$(document).ready(function() {
+			$('input[type=checkbox]').on('change', function(){
+				 var flat = $(this).prop('checked');
+				var parent = '#'+($(this).parent().parent().attr('id'));
+				if ($(parent).children().length > 1) {
+					$(parent).children("label").children().each(function pintarRojoWell(){
+						$(this).prop('checked', false);
+					});
+				}else console.log("no entre");
+				
+				if(flat){
+					$(this).prop('checked', true);
+				}else{
+					$(this).prop('checked', false);
+				}
+			});
+		});
+
+function simularAgregarMaterias(d,h) {
+	data.docente = d;
+	var datos = JSON.parse(h);
+	data.horario = datos;
+	agregarMateria(data);
 }
 
 function agregarMateria(materiaInscrita) {
@@ -156,5 +175,4 @@ function verificarListaTD(listaTD){
 
 function construirData(nombre, id){
 	data[id] = nombre;
-	console.log(data);
 }
