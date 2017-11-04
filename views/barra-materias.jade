@@ -32,6 +32,6 @@ block contenido
                                         - var item = grupo.horarios;
                                         .btn.btn-info #{grupo.nombre} - #{grupo.docente}
                                       label.switch
-                                        input(type='checkbox' id='collapse'+'#{materia.codigoMateria}' name="check")
+                                        input(type='checkbox' id='collapse'+'#{materia.codigoMateria}' name="check" docente='#{grupo.docente}' horarios='#{ capitalize(item) }' )
                                         span.slider
         block contenido2                              

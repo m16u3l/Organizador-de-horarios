@@ -53,7 +53,7 @@ var data = {
 
 		$(document).ready(function() {
 			$('input[type=checkbox]').on('change', function(){
-				 var flat = $(this).prop('checked');
+				var flat = $(this).prop('checked');
 				var parent = '#'+($(this).parent().parent().attr('id'));
 				if ($(parent).children().length > 1) {
 					$(parent).children("label").children().each(function pintarRojoWell(){
@@ -62,6 +62,9 @@ var data = {
 				}else console.log("no entre");
 				
 				if(flat){
+					var d = $(this).attr('docente');
+					var h = $(this).attr('horarios');
+					simularAgregarMaterias(d,h);
 					$(this).prop('checked', true);
 				}else{
 					$(this).prop('checked', false);
