@@ -36,9 +36,9 @@ function ordenarTabla() {
       deberiaIntercambiar = false;
       /* Get the two elements you want to compare,
       one from current row and one from the next: */
-      x = lineas[i].getElementsByTagName("TD")[0];
+      x = lineas[i].getElementsByTagName("A")[0];
       console.log(x);
-      y = lineas[i + 1].getElementsByTagName("TD")[0];
+      y = lineas[i + 1].getElementsByTagName("A")[0];
       console.log(y);
       // Check if the two rows should switch place:
       if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {

@@ -1,6 +1,8 @@
 extends ./navegacion.jade
 block contenido   
+  -function capitalize(s) { return JSON.stringify(s); };
   body
+    link(rel='stylesheet', type='text/css', href='css/barra-materias.css')
     // 2 modos de acceso a los elementos de la variable sobre el tag P
     // p  #{carrera.niveles[0].materias[0].grupos[0].docente}
     // p!= carrera.niveles[0].materias[0].grupos[0].docente
@@ -12,21 +14,26 @@ block contenido
             #accordion(role='tablist', aria-multiselectable='true')
               each nivelPrincipal, i in carrera.niveles
                 .card
-                  .card-header(role='tab', id = 'heading'+'#{nivelPrincipal.nivel}')
+                  .card-header.nivel(role='tab', id = 'heading'+'#{nivelPrincipal.nivel}')
                     h5.mb-0
-                      .btn.btn-primary(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{nivelPrincipal.nivel}', aria-expanded='true', aria-controls='collapse'+'#{nivelPrincipal.nivel}')
+                      .btn.btn-link(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{nivelPrincipal.nivel}', aria-expanded='true', aria-controls='collapse'+'#{nivelPrincipal.nivel}' onclick="construirData('#{nivelPrincipal.nivel}','nivel')")
                         | Nivel #{nivelPrincipal.nivel}
                     .collapse.hide(role='tabpanel', aria-labelledby='heading'+'#{nivelPrincipal.nivel}', id = 'collapse'+'#{nivelPrincipal.nivel}')
                       each materia, j in nivelPrincipal.materias  
                         .card-block
                           #accordion(role='tablist', aria-multiselectable='true')
                               .card
-                                .card-header(role='tab', id = 'heading'+'#{materia.codigoMateria}')
+                                .card-header.materia(role='tab', id = 'heading'+'#{materia.codigoMateria}')
                                   h5.mb-0
-                                    .btn.btn-success(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{materia.codigoMateria}', aria-expanded='true', aria-controls='collapse'+'#{materia.codigoMateria}')
+                                    .btn.btn-link(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{materia.codigoMateria}', aria-expanded='true', aria-controls='collapse'+'#{materia.codigoMateria}' onclick="construirData('#{materia.nombre}','materia')" )
                                       | #{materia.nombre}
                                   .collapse.hide(role='tabpanel', aria-labelledby='heading'+'#{materia.codigoMateria}', id = 'collapse'+'#{materia.codigoMateria}')
                                     each grupo, g in materia.grupos  
                                       .card-block.btn
-                                        .btn.btn-info #{grupo.nombre} - #{grupo.docente}
+                                        .row
+                                          - var item = grupo.horarios;
+                                          .btn.btn-info #{grupo.nombre} - #{grupo.docente}
+                                          label.switch
+                                            input(type='checkbox' id='collapse'+'#{materia.codigoMateria}' name="check" docente='#{grupo.docente}' horarios='#{ capitalize(item) }' )
+                                            span.slider
         block contenido2                              
