@@ -1,0 +1,17 @@
+.nivel {
+    background-color: #55bce4;
+}
+
+.materia {
+    background-color: #747c80;
+}
+
+.btn-link {
+    color: black; 
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    color: black;
+    text-decoration: none;
+}
