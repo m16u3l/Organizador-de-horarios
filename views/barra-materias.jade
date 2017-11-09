@@ -29,10 +29,10 @@ block contenido
                                       | #{materia.nombre}
                                   .collapse.hide(role='tabpanel', aria-labelledby='heading'+'#{materia.codigoMateria}', id = 'collapse'+'#{materia.codigoMateria}')
                                     each grupo, g in materia.grupos  
-                                      .card-block.btn
+                                      .card-block.grupo
                                         .row
                                           - var item = grupo.horarios;
-                                          .btn.btn-info #{grupo.nombre} - #{grupo.docente}
+                                          .btn.btn-link #{grupo.nombre} - #{grupo.docente}
                                           label.switch
                                             input(type='checkbox' id='collapse'+'#{materia.codigoMateria}' name="check" docente='#{grupo.docente}' horarios='#{ capitalize(item) }' )
                                             span.slider
