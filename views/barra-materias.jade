@@ -2,11 +2,23 @@ extends ./navegacion.jade
 block contenido   
   -function capitalize(s) { return JSON.stringify(s); };
   body
-    link(rel='stylesheet', type='text/css', href='css/barra-materias.css')
-    // 2 modos de acceso a los elementos de la variable sobre el tag P
-    // p  #{carrera.niveles[0].materias[0].grupos[0].docente}
-    // p!= carrera.niveles[0].materias[0].grupos[0].docente
+    //link(rel='stylesheet', type='text/css', href='css/barra-materias.css')
+    
+    link(rel='stylesheet', type='text/css', href='css/w3.css')
+    script(src="js/abrirCerrarGrupoSeleccionado.js")
     .container-fluid
+      
+      #lista-grupo-seleccionado.w3-sidebar.w3-bar-block.w3-collapse.w3-card.w3-animate-right.w3-large(style="width:200px;right:0;")
+        button.w3-bar-item.w3-button.w3-large.w3-hide-large(onclick="cerrarGrupoSeleccionado()") Close &times;
+        a.w3-bar-item.w3-button(href="#") lorem 1
+        a.w3-bar-item.w3-button(href="#") lorem 2
+        a.w3-bar-item.w3-button(href="#") lorem 3
+        
+      .w3-main(style="margin-right:200px")
+        .w3-teal 
+          .w3-container
+            button.w3-button.w3-teal.w3-xlarge.w3-right.w3-hide-large(onclick="abrirGrupoSeleccionado()") &#9776;
+
       .row
         .col-md-3 
           h3.h3.text-center.my-3.fixed Lista de Materias
