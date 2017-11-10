@@ -3,27 +3,31 @@ block contenido
   -function capitalize(s) { return JSON.stringify(s); };
   body
     link(rel='stylesheet', type='text/css', href='css/barra-materias.css')
+    link(rel='stylesheet', type='text/css', href='css/desplegable.css')
+    script(src = 'js/desplegable.js')
     // 2 modos de acceso a los elementos de la variable sobre el tag P
     // p  #{carrera.niveles[0].materias[0].grupos[0].docente}
     // p!= carrera.niveles[0].materias[0].grupos[0].docente
-    .container-fluid
-      .row
-        .col-md-3 
-          h3.h3.text-center.my-3.fixed Lista de Materias
-          .scrollable
-            #accordion(role='tablist', aria-multiselectable='true')
-              each nivelPrincipal, i in carrera.niveles
-                .card
-                  .card-header.nivel(role='tab', id = 'heading'+'#{nivelPrincipal.nivel}')
-                    h5.mb-0
-                      .btn.btn-link(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{nivelPrincipal.nivel}', aria-expanded='true', aria-controls='collapse'+'#{nivelPrincipal.nivel}' onclick="construirData('#{nivelPrincipal.nivel}','nivel')")
-                        | Nivel #{nivelPrincipal.nivel}
-                    .collapse.hide(role='tabpanel', aria-labelledby='heading'+'#{nivelPrincipal.nivel}', id = 'collapse'+'#{nivelPrincipal.nivel}')
-                      each materia, j in nivelPrincipal.materias  
-                        .card-block
-                          #accordion(role='tablist', aria-multiselectable='true')
-                              .card
-                                .card-header.materia(role='tab', id = 'heading'+'#{materia.codigoMateria}')
+    #leftMenu.w3-sidebar.w3-bar-block.w3-card.w3-animate-left.text-center          
+      
+          span.sidebar
+            .h5 Lista de Materias
+            button#close-btn.btn.pull-right(onclick="closeLeftMenu()")     
+              i.fa.fa-times 
+          #accordion(role='tablist', aria-multiselectable='true').list-group-item
+            each nivelPrincipal, i in carrera.niveles  
+              .card.nivel
+                .card-header(role='tab', id = 'heading'+'#{nivelPrincipal.nivel}')
+                  h5.mb-0
+                    .btn.btn-link(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{nivelPrincipal.nivel}', aria-expanded='true', aria-controls='collapse'+'#{nivelPrincipal.nivel}' onclick="construirData('#{nivelPrincipal.nivel}','nivel')")
+                      | Nivel #{nivelPrincipal.nivel}
+                  .collapse.hide(role='tabpanel', aria-labelledby='heading'+'#{nivelPrincipal.nivel}', id = 'collapse'+'#{nivelPrincipal.nivel}')
+                    each materia, j in nivelPrincipal.materias  
+                      .card-block
+                        #accordion(role='tablist', aria-multiselectable='true')
+                            .card
+                              .materia
+                                .card-header(role='tab', id = 'heading'+'#{materia.codigoMateria}')
                                   h5.mb-0
                                     .btn.btn-link(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{materia.codigoMateria}', aria-expanded='true', aria-controls='collapse'+'#{materia.codigoMateria}' onclick="construirData('#{materia.nombre}','materia')" )
                                       | #{materia.nombre}
@@ -36,4 +40,15 @@ block contenido
                                           label.switch
                                             input(type='checkbox' id='collapse'+'#{materia.codigoMateria}' name="check" docente='#{grupo.docente}' horarios='#{ capitalize(item) }' )
                                             span.slider
+    #rightMenu.w3-sidebar.w3-bar-block.w3-card.w3-animate-right.text-center 
+      .h5 Materias añadidas
+      button#close-btn.btn.pull-right(onclick="closeRightMenu()")
+        i.fa.fa-times
+      ul#lista-banderas.row.list-inline
+
+    .container-fluid
+      .row
+        .col-md-1
+          button.mini-submenu(onclick="openLeftMenu()") Lista de Materias
+            
         block contenido2                              

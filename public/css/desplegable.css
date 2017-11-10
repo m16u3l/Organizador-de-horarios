@@ -1,0 +1,64 @@
+.mini-submenu{
+  background-color: rgba(0, 0, 0, 0);  
+  border: 5px solid rgba(0, 0, 0, 0.9);
+  margin: 9px;
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 100px;
+  height: 70px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.mini-submenu:hover{
+  cursor: pointer;
+}
+
+.mini-submenu .icon-bar {
+  display: block;
+  height: 2px;
+  width: 22px;
+  margin-top: 3px;
+}
+
+
+.h5 {
+  display: inline-block;
+  padding-top: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#close-btn{
+  margin : 5px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#leftMenu{
+  width : 25%;
+  display: none;
+}
+
+#rightMenu{
+  display:none;
+  right:0px;
+  width : 25%;
+}
+
+
+.col-md-1 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+@media only screen and (max-device-width: 769px) {
+  #leftMenu{
+    width : 100%;
+    display: none;
+  }
+  #rightMenu{
+    width : 100%;
+    display: none;
+  }
+}
