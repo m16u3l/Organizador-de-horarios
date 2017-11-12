@@ -121,14 +121,13 @@ function validateBroken(idClaseHora) {
 
 function crearBanderaNote(nombreMateria, idMateria) {
 	var bandera = document.createElement('li');
-	$(bandera).addClass('col-md-4');
 	$(bandera).addClass('center-block');
 	$(bandera).addClass(idMateria);
 	$(bandera).attr("miNombreClase",idMateria);
 
 	var contenido = document.createElement('div');
 	$(contenido).addClass('btn');
-	$(contenido).addClass('btn-success');
+	$(contenido).addClass('btn-primary');
 	$(contenido).addClass('disabled');
 	$(contenido).addClass('bandera');
 	$(bandera).append($(contenido));

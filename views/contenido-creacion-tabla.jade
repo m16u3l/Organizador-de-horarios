@@ -1,5 +1,9 @@
-extends barra-materias.jade
+extends barras-laterales.jade
 block contenido2
+    .container-fluid#contenido
+      .row
+        .col-md-1
+          button.mini-submenu(onclick="openLeftMenu()") Lista de Materias
         .col-md-10
           #showData.table.table-bordered.table-hover.table-responsive
             table(border='1', align='center')

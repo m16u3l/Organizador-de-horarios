@@ -8,7 +8,7 @@ block contenido
     // 2 modos de acceso a los elementos de la variable sobre el tag P
     // p  #{carrera.niveles[0].materias[0].grupos[0].docente}
     // p!= carrera.niveles[0].materias[0].grupos[0].docente
-    #leftMenu.w3-sidebar.w3-bar-block.w3-card.w3-animate-left.text-center          
+    #leftMenu.w3-sidebar.w3-bar-block.w3-card.w3-animate-left.text-center.scrollable         
       
           span.sidebar
             .h5 Lista de Materias
@@ -40,15 +40,9 @@ block contenido
                                           label.switch
                                             input(type='checkbox' id='collapse'+'#{materia.codigoMateria}' name="check" docente='#{grupo.docente}' horarios='#{ capitalize(item) }' )
                                             span.slider
-    #rightMenu.w3-sidebar.w3-bar-block.w3-card.w3-animate-right.text-center 
+    #rightMenu.w3-sidebar.w3-bar-block.w3-card.w3-animate-right.text-center.scrollable
       .h5 Materias añadidas
       button#close-btn.btn.pull-right(onclick="closeRightMenu()")
-        i.fa.fa-times
-      ul#lista-banderas.row.list-inline
+      ul#lista-banderas.list-inline
 
-    .container-fluid
-      .row
-        .col-md-1
-          button.mini-submenu(onclick="openLeftMenu()") Lista de Materias
-            
-        block contenido2                              
+    block contenido2                              
