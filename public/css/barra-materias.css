@@ -17,3 +17,7 @@
 .btn.btn-link:hover {
     text-decoration: none;
 }
+
+i {
+    color: white;
+}
