@@ -11,6 +11,11 @@
   font-weight: bold;
 }
 
+.mini-submenu-derecho{
+  float: right;
+  right: 0px;
+}
+
 .mini-submenu:hover{
   cursor: pointer;
 }
@@ -53,7 +58,24 @@
   padding-right: 0px;
 }
 
-@media only screen and (max-device-width: 769px) {
+@media only screen and (max-device-width: 992px) {
+  .mini-submenu{
+    background-color: #025E75;  
+    border: 5px solid #63B2C1;
+    color: white;
+    margin: 9px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .mini-submenu-derecho{
+    float: right;
+    right: 0px;
+  }
   #leftMenu{
     width : 100%;
     display: none;

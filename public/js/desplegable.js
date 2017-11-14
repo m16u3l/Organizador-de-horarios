@@ -1,16 +1,3 @@
-/*$(function () {
-
-  $('.mini-submenu').show();
-
-  $('#slide-submenu').on('click', function () {
-    $(this).closest('.list-group').toggle('slide', function () {
-      $('.mini-submenu').fadeIn();
-    });
-
-  });
-})
-*/
-
 function openLeftMenu() {
   $('#leftMenu').toggle('slide');
   document.getElementById("rightMenu").style.display = "none";
