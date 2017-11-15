@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 
 app.use(express.static('public'));
+app.use(express.static('node_modules'));
 app.set("view engine","jade");
 
 app.use(require('./routes/principal.js'));

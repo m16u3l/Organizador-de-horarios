@@ -1,19 +1,26 @@
 .nivel {
     background-color: #025E75;
-    border-radius: none;
+}
+
+h5 {
+    color: white;
 }
 
 .materia {
-    background-color: #047C8D;
-    border-radius: none;
+    background-color:  #047C8D;
 }
 
-.btn-link {
-    color: white;
-    font-weight: bold;
+.btn.btn-primary {
+    background-color:  #63B2C1;
 }
 
-.btn-link:hover {
+i {
     color: white;
-    font-weight: bold;
 }
+
+h5[aria-expanded=true] .fa-chevron-right {
+    display: none;
+ }
+ h5[aria-expanded=false] .fa-chevron-down {
+    display: none;
+ }
