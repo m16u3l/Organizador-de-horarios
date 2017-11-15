@@ -1,6 +1,7 @@
 .nivel {
     background-color: #025E75;
     cursor: pointer;
+    margin: 20px;
 }
 
 h5 {
@@ -36,6 +37,12 @@ i {
     position: absolute;
     right: 3%;
     top: 23px;
+}
+
+.agregar{
+    display: inline-block;
+    position: absolute;
+    
 }
 
 .col-lg-1 {
