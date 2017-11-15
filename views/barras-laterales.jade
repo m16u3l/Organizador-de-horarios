@@ -20,8 +20,8 @@ block contenido
                 .card-header(role='tab', id = 'heading'+'#{nivelPrincipal.nivel}')
                   h5.mb-0(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{nivelPrincipal.nivel}', aria-expanded='false', aria-controls='collapse'+'#{nivelPrincipal.nivel}' onclick="construirData('#{nivelPrincipal.nivel}','nivel')")
                     p Nivel #{nivelPrincipal.nivel}
-                    i.fa.fa-chevron-right.pull-right
-                    i.fa.fa-chevron-down.pull-right
+                    i.fa.fa-chevron-right.pull-right.pos-absolute
+                    i.fa.fa-chevron-down.pull-right.pos-absolute
                   .collapse.hide(role='tabpanel', aria-labelledby='heading'+'#{nivelPrincipal.nivel}', id = 'collapse'+'#{nivelPrincipal.nivel}')
                     each materia, j in nivelPrincipal.materias  
                       .card-block
@@ -31,8 +31,8 @@ block contenido
                                 .card-header(role='tab', id = 'heading'+'#{materia.codigoMateria}')
                                   h5.mb-0(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{materia.codigoMateria}', aria-expanded='true', aria-controls='collapse'+'#{materia.codigoMateria}' onclick="construirData('#{materia.nombre}','materia')" )
                                     p #{materia.nombre}
-                                    i.fa.fa-chevron-right.pull-right
-                                    i.fa.fa-chevron-down.pull-right
+                                    i.fa.fa-chevron-right.pull-right.pos-absolute
+                                    i.fa.fa-chevron-down.pull-right.pos-absolute
                                   .collapse.hide(role='tabpanel', aria-labelledby='heading'+'#{materia.codigoMateria}', id = 'collapse'+'#{materia.codigoMateria}')
                                     each grupo, g in materia.grupos  
                                       .card-block

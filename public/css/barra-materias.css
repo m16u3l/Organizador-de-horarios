@@ -30,7 +30,7 @@ i {
     color: white;
 }
 
-fa.fa-chevron-right fa.fa-chevron-down{
+.pos-absolute{
     display: inline-block;
     vertical-align: top;
     position: absolute;
