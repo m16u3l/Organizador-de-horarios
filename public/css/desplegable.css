@@ -5,10 +5,11 @@
   margin: 9px;
   margin-left: 0px;
   margin-right: 0px;
-  width: 110px;
+  width: 100px;
   height: 70px;
   text-align: center;
   font-weight: bold;
+  padding: 0px;
 }
 
 .mini-submenu-derecho{
@@ -42,20 +43,28 @@
 }
 
 #leftMenu{
-  width : 25%;
+  width : 30%;
   display: none;
 }
 
 #rightMenu{
   display:none;
   right:0px;
-  width : 25%;
+  width : 30%;
 }
 
 
 .col-md-1 {
   padding-left: 0px;
   padding-right: 0px;
+}
+
+p{
+  display: inline-block;
+  margin-bottom: 5px;
+  padding: 0px;
+  position: relative;
+  vertical-align: top;
 }
 
 @media only screen and (max-device-width: 992px) {

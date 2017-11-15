@@ -19,7 +19,7 @@ block contenido
               .card.nivel
                 .card-header(role='tab', id = 'heading'+'#{nivelPrincipal.nivel}')
                   h5.mb-0(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{nivelPrincipal.nivel}', aria-expanded='false', aria-controls='collapse'+'#{nivelPrincipal.nivel}' onclick="construirData('#{nivelPrincipal.nivel}','nivel')")
-                    | Nivel #{nivelPrincipal.nivel}
+                    p Nivel #{nivelPrincipal.nivel}
                     i.fa.fa-chevron-right.pull-right
                     i.fa.fa-chevron-down.pull-right
                   .collapse.hide(role='tabpanel', aria-labelledby='heading'+'#{nivelPrincipal.nivel}', id = 'collapse'+'#{nivelPrincipal.nivel}')
@@ -30,21 +30,22 @@ block contenido
                               .materia
                                 .card-header(role='tab', id = 'heading'+'#{materia.codigoMateria}')
                                   h5.mb-0(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{materia.codigoMateria}', aria-expanded='true', aria-controls='collapse'+'#{materia.codigoMateria}' onclick="construirData('#{materia.nombre}','materia')" )
-                                    | #{materia.nombre}
+                                    p #{materia.nombre}
                                     i.fa.fa-chevron-right.pull-right
                                     i.fa.fa-chevron-down.pull-right
                                   .collapse.hide(role='tabpanel', aria-labelledby='heading'+'#{materia.codigoMateria}', id = 'collapse'+'#{materia.codigoMateria}')
                                     each grupo, g in materia.grupos  
-                                      .card-block.btn
-                                        .row
+                                      .card-block
+                                        .card.grupo
                                           - var item = grupo.horarios;
-                                          .btn.btn-info #{grupo.nombre} - #{grupo.docente}
+                                          p #{grupo.nombre} - #{grupo.docente}
                                           label.switch
                                             input(type='checkbox' id='collapse'+'#{materia.codigoMateria}' name="check" docente='#{grupo.docente}' horarios='#{ capitalize(item) }' )
                                             span.slider
     #rightMenu.w3-sidebar.w3-bar-block.w3-card.w3-animate-right.text-center.scrollable
       .h5 Materias añadidas
       button#close-btn.btn.pull-right(onclick="closeRightMenu()")
+        i.fa.fa-times
       ul#lista-banderas.list-inline
 
     block contenido2                              
