@@ -1,6 +1,10 @@
-extends barra-materias.jade
+extends barras-laterales.jade
 block contenido2
-        .col-md-9
+    .container-fluid#contenido
+      .row
+        .col-lg-1.col-6
+          button.mini-submenu-izquierdo.mini-submenu(onclick="openLeftMenu()") Lista de Materias
+        .col-lg-10.order-3.col-12.order-lg-2
           #showData.table.table-bordered.table-hover.table-responsive
             table(border='1', align='center')
               thead
@@ -94,10 +98,7 @@ block contenido2
                   td#VI2015
                   td#SA2015
           input(type="button" value="Insertar materia" onclick=' simularAgregarMaterias("+ #{lista} +")'  )
-          .container-fluid
-            .row
-              .col-md-12
-                h1 Materias añadidas
-                ul#lista-banderas.row.list-inline      
+        .col-lg-1.order-2.col-6.order-lg-3
+          button.mini-submenu.mini-submenu-derecho(onclick="openRightMenu()") Materias Agregadas     
 
     script(src='js/lista-semestre.js') 
