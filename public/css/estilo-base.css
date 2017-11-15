@@ -21,13 +21,13 @@ th {
     color: white;
 }
 .well-note{
-  background-color: rgb(24, 163, 68);
+  background-color: #4D8E57;
 }
 .well-note-auxiliar{
   background-color: #E8DE2A;
 }
 .well-broken{
-  background-color: #FF3B3B;
+  background-color: #953739;
 }
 
 button{
@@ -51,10 +51,12 @@ button{
 }
 
 .bandera{
-    width: 100%;
+    width: 90%;
     height: 90%;
     margin-bottom: 10px;
     vertical-align: middle;
+    color: white;
+    padding: 0px;
 }
 
 .texto-bandera {
@@ -71,9 +73,8 @@ button{
 
 .scrollable {
   position: absolute;
-  top: 10%;
+  top: 70px;
   bottom: 0;
-  left: 0;
   overflow-y: scroll;
   overflow-x: hidden;
   height:90%;
@@ -91,4 +92,13 @@ body{
 .fixed{
   height: 5%;
   width: 100%;
+}
+
+.navbar{
+      position:fixed;
+      z-index: 100;
+}
+
+#contenido {
+  padding-top: 70px;
 }
