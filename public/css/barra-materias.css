@@ -1,0 +1,57 @@
+.nivel {
+    background-color: #025E75;
+    cursor: pointer;
+    margin: 20px;
+}
+
+h5 {
+    color: white;
+    cursor: pointer;
+}
+
+.materia {
+    background-color:  #047C8D;
+    cursor: pointer;
+    overflow-wrap: break-word;
+}
+
+.btn.btn-primary {
+    background-color:  #63B2C1;
+}
+
+.grupo {
+    background-color: #007bff;
+    cursor: pointer;
+    overflow-wrap: break-word;
+    color: white;
+    padding-top: 10px;
+}
+
+i {
+    color: white;
+}
+
+.pos-absolute{
+    display: inline-block;
+    vertical-align: top;
+    position: absolute;
+    right: 3%;
+    top: 23px;
+}
+
+.agregar{
+    display: inline-block;
+    position: absolute;
+    
+}
+
+.col-lg-1 {
+    padding: 0;
+}
+
+h5[aria-expanded=true] .fa-chevron-right {
+    display: none;
+ }
+ h5[aria-expanded=false] .fa-chevron-down {
+    display: none;
+ }

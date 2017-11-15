@@ -1,0 +1,104 @@
+table,
+th,
+td {
+  margin: 10px 0;
+  border: solid 2px #000;
+  padding: 2px 4px;
+  font: 15px;
+  text-align: center;
+}
+table{
+  width: 100%;
+}
+th {
+  font-weight: bold;
+  text-align: center;
+}
+.well-basic{
+    border-radius: 10px;
+    padding: 3px;
+    margin-bottom: 5px;
+    color: white;
+}
+.well-note{
+  background-color: #4D8E57;
+}
+.well-note-auxiliar{
+  background-color: #E8DE2A;
+}
+.well-broken{
+  background-color: #953739;
+}
+
+button{
+    margin-left: 10px;
+}
+
+.btn-circle {
+    
+    background-image: url("/images/close-circle-512.png");
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-color: red;
+    border-radius: 15px;
+    border: 0;
+    height: 15px; 
+    width: 15px; 
+    vertical-align: middle;
+    display: inline-table;  
+    margin-left: 35px;
+    margin-bottom: 30px;
+}
+
+.bandera{
+    width: 90%;
+    height: 90%;
+    margin-bottom: 10px;
+    vertical-align: middle;
+    color: white;
+    padding: 0px;
+}
+
+.texto-bandera {
+
+    margin: 0;
+    width: 80%;
+    max-width: 80%;
+    height: 100%;
+    display: inline-table;   
+    white-space: normal; 
+    vertical-align: middle;
+    
+}
+
+.scrollable {
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height:90%;
+  width: 100%;
+  max-width: 100%;
+}
+
+body{
+  
+  margin: 0;
+
+
+}
+
+.fixed{
+  height: 5%;
+  width: 100%;
+}
+
+.navbar{
+      position:fixed;
+      z-index: 100;
+}
+
+#contenido {
+  padding-top: 70px;
+}
