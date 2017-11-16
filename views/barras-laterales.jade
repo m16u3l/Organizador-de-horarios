@@ -18,7 +18,7 @@ block contenido
             each nivelPrincipal, i in carrera.niveles  
               .card.nivel
                 .card-header(role='tab', id = 'heading'+'#{nivelPrincipal.nivel}')
-                  h5.mb-0(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{nivelPrincipal.nivel}', aria-expanded='false', aria-controls='collapse'+'#{nivelPrincipal.nivel}' onclick="construirData('#{nivelPrincipal.nivel}','nivel')")
+                  h5.mb-0(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{nivelPrincipal.nivel}', aria-expanded='false', aria-controls='collapse'+'#{nivelPrincipal.nivel}' )
                     p Nivel #{nivelPrincipal.nivel}
                     i.fa.fa-chevron-right.pull-right.pos-absolute
                     i.fa.fa-chevron-down.pull-right.pos-absolute

@@ -22,7 +22,7 @@ function agregarMateriaATablaHorario(docente, horario, idGrupoAniadir) {
 function agregarMateria(materiaInscrita, idGrupoAniadir) {
 
 	var nombreMateria = materiaInscrita["materia"];
-	var idMateria = "MAT" + materiaInscrita["idMateria"];
+	var idMateria = "G" + idGrupoAniadir;
 	var horario = materiaInscrita["horario"];
 
 	for (clase of horario) {
@@ -62,10 +62,10 @@ function validateBroken(idClaseHora) {
 function crearBanderaNote(nombreMateria, idMateria, idGrupoAniadir) {
 	var bandera = document.createElement('li');
 	$(bandera).addClass('center-block');
-	$(bandera).addClass(idMateria);
-	$(bandera).attr("miNombreClase",idMateria);
-	$(bandera).attr("idGrupoBoton",idGrupoAniadir);
-	$(bandera).addClass(idGrupoAniadir);
+	$(bandera).addClass(idMateria);//G123
+	$(bandera).attr("miNombreClase",idMateria);//g123
+	$(bandera).attr("idGrupoBoton",idGrupoAniadir);//123
+	$(bandera).addClass(idGrupoAniadir);//123
 
 	var contenido = document.createElement('div');
 	$(contenido).addClass('btn');
@@ -88,6 +88,8 @@ function crearBanderaNote(nombreMateria, idMateria, idGrupoAniadir) {
 
 	$('.removebtn').on('click',function () {
 		var claseIdMateria = $(this).parent().parent().attr("miNombreClase");
+		var idGrupoBoton = $(this).parent().parent().attr("idGrupoBoton");
+		$('#'+idGrupoBoton).attr('disabled',false);
 		$('div').remove('.'+claseIdMateria);	
 		$(this).parent().parent().remove();
 		limpiarTodosLosChoques();
@@ -115,8 +117,4 @@ function verificarListaTD(listaTD){
 			});
 		}
 	}
-}
-
-function construirData(nombre, id){
-	data[id] = nombre;
 }
