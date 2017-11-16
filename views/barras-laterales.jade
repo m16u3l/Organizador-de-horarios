@@ -39,7 +39,7 @@ block contenido
                                         .card.grupo
                                           - var item = grupo.horarios;
                                           p #{grupo.nombre} - #{grupo.docente}
-                                          button.agregar(id='collapse'+'#{materia.codigoMateria}' name="check" docente='#{grupo.docente}' horarios='#{ capitalize(item) }' )
+                                          button.agregar(id='#{materia.codigoMateria}'+'_'+'#{grupo.nombre}' onclick = "agregarGrupo('#{grupo.docente}','#{ capitalize(item)}','#{materia.codigoMateria}','#{grupo.nombre}')")
                                             i.fa.fa-plus
     #rightMenu.w3-sidebar.w3-bar-block.w3-card.w3-animate-right.text-center.scrollable
       .h5 Materias añadidas
