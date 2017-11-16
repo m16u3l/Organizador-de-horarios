@@ -20,5 +20,8 @@
     "express": "^4.16.0",
     "jade": "^1.11.0",
     "mongoose": "^4.12.0"
+  },
+  "devDependencies": {
+    "font-awesome": "^4.7.0"
   }
 }
