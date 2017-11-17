@@ -12,8 +12,8 @@ block contenido
       
           span.sidebar
             .h5 Lista de Materias
-            button#close-btn.btn.pull-right(onclick="closeLeftMenu()")     
-              i.fa.fa-times 
+            button#close-btn.btn.btn-danger.pull-right(onclick="closeLeftMenu()")     
+              i.fa.fa-times
           #accordion(role='tablist', aria-multiselectable='true').list-group-item
             each nivelPrincipal, i in carrera.niveles  
               .card.nivel
@@ -38,17 +38,15 @@ block contenido
                                       .card-block
                                         .card.grupo
                                           - var item = grupo.horarios;
-                                          .row.card-docente-grupo
-                                            .col-xs-11
-                                              p #{grupo.nombre} - #{grupo.docente}
-                                            .col-xs-1
-                                              button.agregar(id='#{materia.codigoMateria}'+'_'+'#{grupo.nombre}' onclick = "agregarGrupo('#{grupo.docente}','#{ capitalize(item)}','#{materia.codigoMateria}','#{grupo.nombre}','#{materia.nombre}')")
-                                                i.fa.fa-plus
+                                          .card-docente-grupo
+                                            p #{grupo.nombre} - #{grupo.docente}
+                                            button.btn.btn-sm.btn-primary.pull-right.agregar(id='#{materia.codigoMateria}'+'_'+'#{grupo.nombre}' onclick = "agregarGrupo('#{grupo.docente}','#{ capitalize(item)}','#{materia.codigoMateria}','#{grupo.nombre}','#{materia.nombre}')")
+                                              i.fa.fa-plus
                                             
                                           
     #rightMenu.w3-sidebar.w3-bar-block.w3-card.w3-animate-right.text-center.scrollable
       .h5 Materias añadidas
-      button#close-btn.btn.pull-right(onclick="closeRightMenu()")
+      button#close-btn.btn.btn-danger.pull-right(onclick="closeRightMenu()")
         i.fa.fa-times
       ul#lista-banderas.list-inline
 
