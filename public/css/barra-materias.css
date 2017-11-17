@@ -41,7 +41,6 @@ i {
 .agregar{
     display: inline-block;
     position: relative;
-    float:  right;
     right: 0px;
 }
 
