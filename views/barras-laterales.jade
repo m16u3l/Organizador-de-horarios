@@ -18,7 +18,7 @@ block contenido
             each nivelPrincipal, i in carrera.niveles  
               .card.nivel
                 .card-header(role='tab', id = 'heading'+'#{nivelPrincipal.nivel}')
-                  h5.mb-0(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{nivelPrincipal.nivel}', aria-expanded='false', aria-controls='collapse'+'#{nivelPrincipal.nivel}' onclick="construirData('#{nivelPrincipal.nivel}','nivel')")
+                  h5.mb-0(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{nivelPrincipal.nivel}', aria-expanded='false', aria-controls='collapse'+'#{nivelPrincipal.nivel}' )
                     p Nivel #{nivelPrincipal.nivel}
                     i.fa.fa-chevron-right.pull-right.pos-absolute
                     i.fa.fa-chevron-down.pull-right.pos-absolute
@@ -29,7 +29,7 @@ block contenido
                             .card
                               .materia
                                 .card-header(role='tab', id = 'heading'+'#{materia.codigoMateria}')
-                                  h5.mb-0(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{materia.codigoMateria}', aria-expanded='true', aria-controls='collapse'+'#{materia.codigoMateria}' onclick="construirData('#{materia.nombre}','materia')" )
+                                  h5.mb-0(data-toggle='collapse', data-parent='#accordion', href='#collapse'+'#{materia.codigoMateria}', aria-expanded='true', aria-controls='collapse'+'#{materia.codigoMateria}' )
                                     p #{materia.nombre}
                                     i.fa.fa-chevron-right.pull-right.pos-absolute
                                     i.fa.fa-chevron-down.pull-right.pos-absolute
@@ -38,9 +38,14 @@ block contenido
                                       .card-block
                                         .card.grupo
                                           - var item = grupo.horarios;
-                                          p #{grupo.nombre} - #{grupo.docente}
-                                            button.btn.btn-primary.agregar(id='collapse'+'#{materia.codigoMateria}' name="check" docente='#{grupo.docente}' horarios='#{ capitalize(item) }')
-                                              i.fa.fa-plus
+                                          .row.card-docente-grupo
+                                            .col-xs-11
+                                              p #{grupo.nombre} - #{grupo.docente}
+                                            .col-xs-1
+                                              button.btn.btn-primary.agregar(id='#{materia.codigoMateria}'+'_'+'#{grupo.nombre}' onclick = "agregarGrupo('#{grupo.docente}','#{ capitalize(item)}','#{materia.codigoMateria}','#{grupo.nombre}','#{materia.nombre}')")
+                                                i.fa.fa-plus
+                                            
+                                          
     #rightMenu.w3-sidebar.w3-bar-block.w3-card.w3-animate-right.text-center.scrollable
       .h5 Materias añadidas
       button#close-btn.btn.btn-danger.pull-right(onclick="closeRightMenu()")

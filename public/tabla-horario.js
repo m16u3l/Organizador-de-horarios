@@ -1,48 +1,3 @@
-var materiasPulsadas = [
-	{
-		"materia": "INGLES I",
-		"idMateria": "123",
-		"docente": "CESPEDES GUIZADA MARIA BENITA",
-		"grupo": 1,
-		"horario": [
-			{
-				"dia": "MA",
-				"hora": "645-815",
-				"aula": "617"
-			},
-			{
-				"dia": "MI",
-				"hora": "815-945",
-				"aula": "691D"
-			}
-		]
-	},
-	{
-		"materia": "INTRODUCCION A LA PROGRAMACION",
-		"idMateria": "124",
-		"docente": "BLANCO COCA LETICIO",
-		"grupo": 2,
-		"horario": [
-			{
-				"dia": "MA",
-				"hora": "645-815",
-				"aula": "691C"
-			},
-			{
-				"auxiliatura": "ALURRALDE SANCHEZ ANTONIO",
-				"dia": "MI",
-				"hora": "1415-1545",
-				"aula": "691B"
-			},
-			{
-				"dia": "LU",
-				"hora": "1415-1545",
-				"aula": "624"
-			}
-		]
-	}
-];
-
 var data = {
 	nivel:"nothin",
 	materia:"nothing",
@@ -51,38 +6,24 @@ var data = {
 	grupo:"nothing"
 }
 
-		$(document).ready(function() {
-			$('input[type=checkbox]').on('change', function(){
-				var flat = $(this).prop('checked');
-				var parent = '#'+($(this).parent().parent().attr('id'));
-				if ($(parent).children().length > 1) {
-					$(parent).children("label").children().each(function pintarRojoWell(){
-						$(this).prop('checked', false);
-					});
-				}else console.log("no entre");
-				
-				if(flat){
-					var d = $(this).attr('docente');
-					var h = $(this).attr('horarios');
-					simularAgregarMaterias(d,h);
-					$(this).prop('checked', true);
-				}else{
-					$(this).prop('checked', false);
-				}
-			});
-		});
-
-function simularAgregarMaterias(d,h) {
-	data.docente = d;
-	var datos = JSON.parse(h);
-	data.horario = datos;
-	agregarMateria(data);
+function agregarGrupo(docente, horario, codigoMateria, idGrupo,nombreMateria){
+	var idGrupoAniadir = codigoMateria+'_'+idGrupo;
+	$('#'+idGrupoAniadir).attr('disabled',true);
+	agregarMateriaATablaHorario(docente, horario, idGrupoAniadir,nombreMateria);
 }
 
-function agregarMateria(materiaInscrita) {
+function agregarMateriaATablaHorario(docente, horario, idGrupoAniadir,nombreMateria) {
+	data.docente = docente;
+	data.materia = nombreMateria;
+	var datos = JSON.parse(horario);
+	data.horario = datos;
+	agregarMateria(data, idGrupoAniadir);
+}
+
+function agregarMateria(materiaInscrita, idGrupoAniadir) {
 
 	var nombreMateria = materiaInscrita["materia"];
-	var idMateria = "MAT" + materiaInscrita["idMateria"];
+	var idMateria = "G" + idGrupoAniadir;
 	var horario = materiaInscrita["horario"];
 
 	for (clase of horario) {
@@ -90,7 +31,7 @@ function agregarMateria(materiaInscrita) {
 		crearWellNote(nombreMateria, idMateria, clase);
 	}
 	//agrega en la lista de materias
-	crearBanderaNote(nombreMateria, idMateria);
+	crearBanderaNote(nombreMateria, idMateria, idGrupoAniadir);
 }
 
 function crearWellNote(nombreMateria, idMateria, clase) {
@@ -119,11 +60,13 @@ function validateBroken(idClaseHora) {
 	}
 }
 
-function crearBanderaNote(nombreMateria, idMateria) {
+function crearBanderaNote(nombreMateria, idMateria, idGrupoAniadir) {
 	var bandera = document.createElement('li');
 	$(bandera).addClass('center-block');
-	$(bandera).addClass(idMateria);
-	$(bandera).attr("miNombreClase",idMateria);
+	$(bandera).addClass(idMateria);//G123
+	$(bandera).attr("miNombreClase",idMateria);//g123
+	$(bandera).attr("idGrupoBoton",idGrupoAniadir);//123
+	$(bandera).addClass(idGrupoAniadir);//123
 
 	var contenido = document.createElement('div');
 	$(contenido).addClass('btn');
@@ -146,6 +89,8 @@ function crearBanderaNote(nombreMateria, idMateria) {
 
 	$('.removebtn').on('click',function () {
 		var claseIdMateria = $(this).parent().parent().attr("miNombreClase");
+		var idGrupoBoton = $(this).parent().parent().attr("idGrupoBoton");
+		$('#'+idGrupoBoton).attr('disabled',false);
 		$('div').remove('.'+claseIdMateria);	
 		$(this).parent().parent().remove();
 		limpiarTodosLosChoques();
@@ -173,8 +118,4 @@ function verificarListaTD(listaTD){
 			});
 		}
 	}
-}
-
-function construirData(nombre, id){
-	data[id] = nombre;
 }
