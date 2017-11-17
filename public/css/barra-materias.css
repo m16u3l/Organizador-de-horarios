@@ -21,7 +21,7 @@ h5 {
 
 .grupo {
     background-color: #007bff;
-    cursor: pointer;
+    cursor: default;
     overflow-wrap: break-word;
     color: white;
     padding-top: 10px;
@@ -41,8 +41,9 @@ i {
 
 .agregar{
     display: inline-block;
-    position: absolute;
-    
+    position: relative;
+    float:  right;
+    right: 0px;
 }
 
 .col-lg-1 {
@@ -52,6 +53,6 @@ i {
 h5[aria-expanded=true] .fa-chevron-right {
     display: none;
  }
- h5[aria-expanded=false] .fa-chevron-down {
+h5[aria-expanded=false] .fa-chevron-down {
     display: none;
  }
