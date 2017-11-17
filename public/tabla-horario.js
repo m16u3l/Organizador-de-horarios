@@ -6,14 +6,15 @@ var data = {
 	grupo:"nothing"
 }
 
-function agregarGrupo(docente, horario, codigoMateria, idGrupo){
+function agregarGrupo(docente, horario, codigoMateria, idGrupo,nombreMateria){
 	var idGrupoAniadir = codigoMateria+'_'+idGrupo;
 	$('#'+idGrupoAniadir).attr('disabled',true);
-	agregarMateriaATablaHorario(docente, horario, idGrupoAniadir);
+	agregarMateriaATablaHorario(docente, horario, idGrupoAniadir,nombreMateria);
 }
 
-function agregarMateriaATablaHorario(docente, horario, idGrupoAniadir) {
+function agregarMateriaATablaHorario(docente, horario, idGrupoAniadir,nombreMateria) {
 	data.docente = docente;
+	data.materia = nombreMateria;
 	var datos = JSON.parse(horario);
 	data.horario = datos;
 	agregarMateria(data, idGrupoAniadir);
