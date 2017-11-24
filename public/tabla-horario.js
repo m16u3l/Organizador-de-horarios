@@ -42,7 +42,7 @@ function crearWellNote(nombreMateria, idMateria, clase) {
 	$(wellHtml).addClass(idMateria);
 	$(wellHtml).text(nombreMateria + " - " + clase["aula"]);
 
-	if (clase["auxiliatura"] === undefined) {
+	if (clase["auxiliatura"] === undefined && clase["auxiliar"] === undefined) {
 		$(wellHtml).addClass("well-note");
 	} else {
 		$(wellHtml).addClass("well-note-auxiliar");
