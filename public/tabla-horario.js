@@ -105,13 +105,13 @@ function limpiarTodosLosChoques(){
 	verificarListaTR($('#cuerpoTabla').children());
 }
 function verificarListaTR(listaTR){
-	for (let i = 0; i< listaTR.length-1;i++){
+	for (let i = 0; i< listaTR.length;i++){
 		verificarListaTD($(listaTR[i]).children());
 	}
 }
 
 function verificarListaTD(listaTD){
-	for (let j =0 ;j<listaTD.length-1;j++){
+	for (let j =0 ;j<listaTD.length;j++){
 		if($(listaTD[j]).children().length <=1){
 			$(listaTD[j]).children().each(function eliminarClaseBroken(){
 				$(this).removeClass("well-broken");
