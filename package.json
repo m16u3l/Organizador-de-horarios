@@ -17,9 +17,12 @@
   },
   "homepage": "https://github.com/m16u3l/Organizador-de-horarios#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.0",
     "jade": "^1.11.0",
-    "mongoose": "^4.12.0"
+    "mongoose": "^4.12.0",
+    "multer": "^1.3.0",
+    "pdfjs-dist": "^2.0.205"
   },
   "devDependencies": {
     "font-awesome": "^4.7.0"
