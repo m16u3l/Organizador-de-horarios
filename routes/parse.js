@@ -72,7 +72,7 @@ router.post("/parse",uploader.single('file_input'),function(solicitud,res){
         });
 
         if (true) {
-            res.render("vista-previa-carrera.jade",{choque: oscar});
+            res.render("vista-previa-carrera.jade");
         } else {
             res.render("error-parser-PDF.jade");
         }
