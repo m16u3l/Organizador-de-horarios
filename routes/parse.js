@@ -92,7 +92,7 @@ router.post("/parse", uploader.single('file_input'), function (solicitud, res) {
             } catch (err) {
                 res.render("error-parser-PDF.jade");
             }
-            res.render("vista-previa-carrera.jade");
+            res.render("cambios-preview.jade");
         });
 
 
