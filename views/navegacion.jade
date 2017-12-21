@@ -3,4 +3,9 @@ block navegacion
     nav.container-fluid.navbar.navbar-dark.bg-dark
         .navbar-header
             h1.title.navbar-brand Organizador de horarios
+        form(method="POST" action="/parse" style="margin-top:1.5em;" enctype="multipart/form-data")
+            div(class="form-group" id="subir-archivo")
+                input(type="file" name="file_input" id="file")
+                button(type="submit" class="btn btn-info" value="Subir")
+                    i(class="fa fa-upload")    
     block contenido

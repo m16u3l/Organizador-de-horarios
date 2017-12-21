@@ -99,3 +99,11 @@ body{
 #contenido {
   padding-top: 70px;
 }
+
+#subir-archivo {
+  margin-bottom: 0;
+}
+
+#file {
+  background-color: white; 
+}
