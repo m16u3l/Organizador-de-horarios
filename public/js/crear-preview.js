@@ -1,155 +1,154 @@
 var previewDePrueba = {
   "anadidas": [{
-      "nivel": "A",
-      "materias": [{
-          "nombreMateria": "INGLES I",
-          "grupos": [{
-            "nombreGrupo": "5",
-            "horarios": [{
-                "aula": "692B",
-                "hora": "1845-2015",
-                "dia": "LU"
-              },
-              {
-                "aula": "692B",
-                "hora": "1845-2015",
-                "dia": "MI"
-              },
-              {
-                "aula": "692D",
-                "hora": "945-1115",
-                "dia": "SA",
-                "auxiliar": "CHIPANA WARISTE RONALD HUMBERTO"
-              }
-            ]
-          }]
-        },
-        {
-          "nombreMateria": "CALCULO I",
-          "grupos": [{
-            "nombreGrupo": "5",
-            "horarios": [{
-                "aula": "692B",
-                "hora": "1845-2015",
-                "dia": "LU"
-              },
-              {
-                "aula": "692B",
-                "hora": "1845-2015",
-                "dia": "MI"
-              },
-              {
-                "aula": "692D",
-                "hora": "945-1115",
-                "dia": "SA",
-                "auxiliar": "CHIPANA WARISTE RONALD HUMBERTO"
-              }
-            ]
-          }]
-        }
-      ]
+      "nombreMateria": "INGLES I",
+      "grupos": [{
+        "nombreGrupo": "5",
+        "horarios": [{
+            "aula": "692B",
+            "hora": "1845-2015",
+            "dia": "LU"
+          },
+          {
+            "aula": "692B",
+            "hora": "1845-2015",
+            "dia": "MI"
+          },
+          {
+            "aula": "692D",
+            "hora": "945-1115",
+            "dia": "SA",
+            "auxiliar": "CHIPANA WARISTE RONALD HUMBERTO"
+          }
+        ]
+      }]
     },
     {
-      "nivel": "B",
-      "materias": [{
-        "nombreMateria": "INGLES I",
-        "grupos": [{
-          "nombreGrupo": "5",
-          "horarios": [{
-              "aula": "692B",
-              "hora": "1845-2015",
-              "dia": "LU"
-            },
-            {
-              "aula": "692B",
-              "hora": "1845-2015",
-              "dia": "MI"
-            },
-            {
-              "aula": "692D",
-              "hora": "945-1115",
-              "dia": "SA",
-              "auxiliar": "CHIPANA WARISTE RONALD HUMBERTO"
-            }
-          ]
-        }]
+      "nombreMateria": "CALCULO I",
+      "grupos": [{
+        "nombreGrupo": "5",
+        "horarios": [{
+            "aula": "692B",
+            "hora": "1845-2015",
+            "dia": "LU"
+          },
+          {
+            "aula": "692B",
+            "hora": "1845-2015",
+            "dia": "MI"
+          },
+          {
+            "aula": "692D",
+            "hora": "945-1115",
+            "dia": "SA",
+            "auxiliar": "CHIPANA WARISTE RONALD HUMBERTO"
+          }
+        ]
+      }]
+    },
+
+
+
+    {
+      "nombreMateria": "INGLES I",
+      "grupos": [{
+        "nombreGrupo": "5",
+        "horarios": [{
+            "aula": "692B",
+            "hora": "1845-2015",
+            "dia": "LU"
+          },
+          {
+            "aula": "692B",
+            "hora": "1845-2015",
+            "dia": "MI"
+          },
+          {
+            "aula": "692D",
+            "hora": "945-1115",
+            "dia": "SA",
+            "auxiliar": "CHIPANA WARISTE RONALD HUMBERTO"
+          }
+        ]
       }]
     }
-
-
   ],
   "modificadas": [{
-      "nivel": "A",
-      "materias": [{
-        "nombreMateria": "INGLES I",
-        "grupos": [{
-          "nombreGrupo": "1",
-          "horarios": [{
-              "aula": "692B",
-              "hora": "2015-2145",
-              "dia": "LU"
-            },
-            {
-              "aula": "690A",
-              "hora": "1845-2015",
-              "dia": "MI"
-            },
-            {
-              "aula": "692D",
-              "hora": "945-1115",
-              "dia": "SA",
-              "auxiliar": "CHIPANA WARISTE RONALD HUMBERTO"
-            }
-          ]
-        }]
-      }]
-    }
+    "nombreMateria": "INGLES I",
+    "grupos": [{
+      "nombreGrupo": "1",
+      "horarios": [{
+          "aula": "692B",
+          "hora": "2015-2145",
+          "dia": "LU"
+        },
+        {
+          "aula": "690A",
+          "hora": "1845-2015",
+          "dia": "MI"
+        },
+        {
+          "aula": "692D",
+          "hora": "945-1115",
+          "dia": "SA",
+          "auxiliar": "CHIPANA WARISTE RONALD HUMBERTO"
+        }
+      ]
+    }]
+  }],
 
-  ],
   "eliminadas": [{
-      "nivel": "A",
-      "materias": [{
-        "nombreMateria": "INGLES I",
-        "grupos": [{
-          "nombreGrupo": "5",
-          "horarios": [{
-              "aula": "692B",
-              "hora": "1845-2015",
-              "dia": "LU"
-            },
-            {
-              "aula": "692B",
-              "hora": "1845-2015",
-              "dia": "MI"
-            },
-            {
-              "aula": "692D",
-              "hora": "945-1115",
-              "dia": "SA",
-              "auxiliar": "CHIPANA WARISTE RONALD HUMBERTO"
-            }
-          ]
-        }]
-      }]
-    }
 
-  ]
+    "nombreMateria": "INGLES I",
+    "grupos": [{
+      "nombreGrupo": "5",
+      "horarios": [{
+          "aula": "692B",
+          "hora": "1845-2015",
+          "dia": "LU"
+        },
+        {
+          "aula": "692B",
+          "hora": "1845-2015",
+          "dia": "MI"
+        },
+        {
+          "aula": "692D",
+          "hora": "945-1115",
+          "dia": "SA",
+          "auxiliar": "CHIPANA WARISTE RONALD HUMBERTO"
+        }
+      ]
+    }]
+  }]
+}
+
+var previewDePrueba2 = {
+  "anadidas": [],
+  "modificadas": [],
+  "eliminadas": []
 }
 
 function test() {
-  createPreview(previewDePrueba);
+  createPreview(previewDePrueba2);
 }
 
 function createPreview(jsonContent) {
-  for (nivel of jsonContent.anadidas) {
-    crearNiveles($('#tableAnadidas'), nivel);
+  if (jsonContent.anadidas.length != 0 || jsonContent.modificadas.length != 0 | jsonContent.eliminadas.length != 0) {
+    document.getElementById("contenido").style.display = "block";
+    document.getElementById("noMaterias").style.display = "none";
+  } else {
+    document.getElementById("contenido").style.display = "none";
+    document.getElementById("noMaterias").style.display = "block";
+  }
+  for (materia of jsonContent.anadidas) {
+    crearMaterias(materia, $('#tableAnadidas'));
   }
 
   for (nivel of jsonContent.modificadas) {
-    crearNiveles($('#tableModificadas'), nivel);
+    crearMaterias(nivel, $('#tableModificadas'));
   }
   for (nivel of jsonContent.eliminadas) {
-    crearNiveles($('#tableEliminadas'), nivel);
+    crearMaterias(nivel, $('#tableEliminadas'));
   }
 
 }
@@ -170,7 +169,7 @@ function crearNiveles(tablaActual, nivelActual) {
   $(tablaMaterias).addClass("tabla-materia");
   $(tablaMaterias).addClass("table-sm");
   $(columnaMaterias).append(tablaMaterias);
-  
+
 
   $(tablaActual).append(nuevaFila);
   $(tablaActual).addClass("tabla-nivel");
@@ -203,7 +202,7 @@ function crearMaterias(materiaActual, tablaMaterias) {
 
 }
 
-function crearGrupos(grupoActual, tablaGrupos){
+function crearGrupos(grupoActual, tablaGrupos) {
   var columnaHorarios = document.createElement('td');
   var nuevaFila = document.createElement('tr');
   var grupo = document.createElement('th');
@@ -211,7 +210,7 @@ function crearGrupos(grupoActual, tablaGrupos){
 
   $(tablaHorarios).addClass("tabla-grupo");
   $(tablaHorarios).addClass("table-sm");
-  $(grupo).text("Grupo " +grupoActual.nombreGrupo);
+  $(grupo).text("Grupo " + grupoActual.nombreGrupo);
   $(grupo).addClass("align-middle");
   $(nuevaFila).append(grupo);
   $(nuevaFila).append(columnaHorarios);
@@ -223,7 +222,7 @@ function crearGrupos(grupoActual, tablaGrupos){
   }
 }
 
-function crearHorarios(horarioActual, tablaHorarios){
+function crearHorarios(horarioActual, tablaHorarios) {
   var nuevaFila = document.createElement('tr');
   var horario = document.createElement('th');
   $(horario).text(horarioActual.dia + horarioActual.hora + horarioActual.aula);
