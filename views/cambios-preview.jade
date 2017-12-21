@@ -1,0 +1,39 @@
+extends navegacion.jade
+block contenido
+  
+  
+  body(onload='test();')
+    link(rel='stylesheet', type='text/css', href='css/cambios-preview.css')
+    link(rel='stylesheet', type='text/css', href='css/barra-materias.css')
+    link(rel='stylesheet', type='text/css', href='css/desplegable.css')
+    script(src="js/crear-preview.js") 
+    .container-fluid#contenido
+      .row
+        .col-2
+        .col-8.offset-2.materias-anadidas  
+          h5 Grupos Añadidos
+          .row
+            .col-2  
+            .col-8.anadidas
+              table#tableAnadidas.table.table-sm
+        .col-2
+        .col-2
+        .col-8.offset-2.materias-modificadas  
+          h5 Grupos Modificados
+          .row
+            .col-2
+            .col-8.modificadas
+              table#tableModificadas.table.table-sm
+        .col-2
+        .col-2
+        .col-8.materias-eliminadas  
+          h5 Grupos Eliminados
+          .row  
+            .col-2  
+            .col-8.offset-2.eliminadas
+              table#tableEliminadas.table
+        .col-12.text-right
+          button.btn.btn-success Aceptar cambios 
+          button.btn.btn-danger Cancelar 
+
+  block contenido2
