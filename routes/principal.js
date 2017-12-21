@@ -4,61 +4,66 @@ var mongoose = require('mongoose');
 
 var promise = mongoose.connect('mongodb://localhost/organizadoraHorarios', {
 	useMongoClient: true,
-  });
+});
 
 var router = express();
 
 // horario
 var horarioSchema = {
+	auxiliar: String,
 	dia: String,
-    hora: String,
-    aula: Number
+	hora: String,
+	aula: Number
 };
-var Horario = mongoose.model("Horario",horarioSchema);
+var Horario = mongoose.model("Horario", horarioSchema);
 // grupo
 var grupoSchema = {
-	nombre : Number,
-	docente : String,
-	horarios : Array
+	nombre: Number,
+	docente: String,
+	horarios: Array
 };
-var Grupo = mongoose.model("Grupo",grupoSchema);
+var Grupo = mongoose.model("Grupo", grupoSchema);
 // materia
 var materiaSchema = {
-	nombre : String,
-	grupos : Array
+	nombre: String,
+	codigoMateria: String,
+	grupos: Array
 };
-var Materia = mongoose.model("Materia",materiaSchema);
+var Materia = mongoose.model("Materia", materiaSchema);
 // nivel
 var nivelSchema = {
-	nivel : String,
-	materias : Array
+	nivel: String,
+	materias: Array
 };
-var Nivel = mongoose.model("Nivel",nivelSchema);
+var Nivel = mongoose.model("Nivel", nivelSchema);
 //carrera
 var carreraSchema = {
-	nombre : String,
-	codigo : String,
-	niveles : Array
+	nombre: String,
+	codigo: String,
+	facultad: String,
+	gestion: String,
+	anio: String,
+	fechaEmision: String,
+	niveles: Array
 };
-var Carrera = mongoose.model("Carrera",carreraSchema);
-
+var Carrera = mongoose.model("Carrera", carreraSchema);
 
 // Get - parse
 
-router.get('/carrera',function(req,res) {
+router.get('/carrera', function (req, res) {
 	var parametros = [];
 	var id_carrera;
-	if(req.url.indexOf("?")){
+	if (req.url.indexOf("?")) {
 		var url_data = req.url.split("?");
 		var parametros = url_data[1].split("&");
 		var valores = parametros[0].split("=");
 		id_carrera = valores[1];
 	}
-	Carrera.findById(id_carrera,function(err,docs){
+	Carrera.findById(id_carrera, function (err, docs) {
 		if (err) {
 			console.log(error);
-		}else{
-			res.render('contenido-creacion-tabla.jade', {carrera:docs});
+		} else {
+			res.render('contenido-creacion-tabla.jade', { carrera: docs });
 		}
 	});
 });

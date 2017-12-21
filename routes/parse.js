@@ -3,22 +3,28 @@ var router = express.Router();
 
 var bodyParser = require('body-parser');
 var multer = require('multer');
-var uploader = multer({dest: "./uploads"}); 
+var uploader = multer({ dest: "./uploads" });
 
 var mongoose = require('mongoose');
 var promise = mongoose.connect('mongodb://localhost/organizadoraHorarios', {
-	useMongoClient: true,
-  });
+    useMongoClient: true,
+});
+var conn = mongoose.connection;
+
 var PDFJS = require('pdfjs-dist');
 var fs = require('fs');
 var preprocesador = require("./preprocesamiento.js");
 
-var Carrera = mongoose.model('Carrera');
+var carrera = mongoose.model('Carrera');
+
 var contains = preprocesador.contains;
 var getNivel = preprocesador.getNivel;
 
-router.post("/parse",uploader.single('file_input'),function(solicitud,res){
-    
+var validador = require("./validacion.js");
+var checkNiveles = validador.checkNiveles;
+
+router.post("/parse", uploader.single('file_input'), function (solicitud, res) {
+
     var my_path = solicitud.file.path;
     var data = new Uint8Array(fs.readFileSync(my_path));
 
@@ -26,32 +32,32 @@ router.post("/parse",uploader.single('file_input'),function(solicitud,res){
         var pdfDocument = pdf;
         var pagesPromises = []; //list of promises
 
-        var crearPromesa = function (pageNumber){
-            var textoPagina = getPageText(pageNumber,pdfDocument);
+        var crearPromesa = function (pageNumber) {
+            var textoPagina = getPageText(pageNumber, pdfDocument);
             pagesPromises.push(textoPagina);
         };
 
         for (var i = 0; i < pdf.pdfInfo.numPages; i++) {
-            crearPromesa(i+1);
+            crearPromesa(i + 1);
         }
-        
+
         Promise.all(pagesPromises).then(function (pagesText) {
-            var horarioFinal={},nombreCarrera,facultad,gestion,fecha,semestres=[];
-            for(var i = 0;i < pagesText.length;i++){
+            var horarioFinal = {}, nombreCarrera, facultad, gestion, fecha, semestres = [];
+            for (var i = 0; i < pagesText.length; i++) {
                 var palabrasPagina = pagesText[i].split("\n");
-                
-                if(i === 0){
+
+                if (i === 0) {
                     nombreCarrera = palabrasPagina.shift();
-                    
+
                     var nivel = palabrasPagina.shift();
 
                     facultad = palabrasPagina.shift();
                     gestion = palabrasPagina.shift();
                     fecha = palabrasPagina.pop();
                     fecha = palabrasPagina.pop();
-                    
+
                     palabrasPagina.unshift(nivel);
-                }else{
+                } else {
                     palabrasPagina.shift();
                     var nivel = palabrasPagina.shift();
                     palabrasPagina.shift();
@@ -60,8 +66,8 @@ router.post("/parse",uploader.single('file_input'),function(solicitud,res){
                     palabrasPagina.pop();
                     palabrasPagina.unshift(nivel);
                 }
-                var jsonNivel =  getNivel(palabrasPagina);
-                if (jsonNivel.nivel !== undefined){
+                var jsonNivel = getNivel(palabrasPagina);
+                if (jsonNivel.nivel !== undefined) {
                     semestres.push(jsonNivel);
                 }
             }
@@ -73,6 +79,12 @@ router.post("/parse",uploader.single('file_input'),function(solicitud,res){
             horarioFinal.fechaEmision = fecha;
             horarioFinal.niveles = semestres;
 
+
+            //conn.collection('carreras').insert(horarioFinal);
+            //console.log(carrera);
+            //console.log(horarioFinal);
+
+
             if (true) {
                 res.render("vista-previa-carrera.jade");
             } else {
@@ -80,12 +92,12 @@ router.post("/parse",uploader.single('file_input'),function(solicitud,res){
             }
         });
 
-        
+
 
     }, function (reason) {
         res.render("error-parser-PDF.jade");
     });
-    
+
 });
 
 function getPageText(pageNum, PDFDocumentInstance) {
@@ -101,9 +113,9 @@ function getPageText(pageNum, PDFDocumentInstance) {
                     for (var i = 0; i < textItems.length; i++) {
                         var item = textItems[i];
 
-                        if(!contains(item.str)){
+                        if (!contains(item.str)) {
                             finalString += item.str + "\n";
-                        } 
+                        }
                     }
                     // Solve promise with the text retrieven from the page
                     resolve(finalString);
@@ -112,4 +124,5 @@ function getPageText(pageNum, PDFDocumentInstance) {
         }
     );
 }
+
 module.exports = router;
