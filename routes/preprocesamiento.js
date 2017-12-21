@@ -29,24 +29,107 @@ function getNivel (palabrasPagina){
         }
     }
 
-    //var materias = getListaMaterias(horariosSimples);
-    nivel.materias = horariosSimples;
+    var materias = getListaMaterias(horariosSimples);
+    nivel.materias = materias;
     return nivel;
 }
 /**
  * 
- * @param {*} horariosSimples: lista de cada horario simple --> {codigoMateria, nombre,grupo,dia,hora,aula,docente} 
+ * @param {*} horariosSimples: lista de cada horario simple --> 
+ * {codigoMateria, nombre,grupo,dia,hora,aula,docente}
+ *  RETORNO lista de materias [ {nombre,codigo,grupos}, {}]
  */
 function getListaMaterias(horariosSimples){
-    var res = [];   //materias[{grupos,nombre,codigo}]
-    
-    var materiaActual = {};
+    var conjuntoMateria = [];
     while(horariosSimples.length>0){
-        var primerSimple = horarios.shift();
-        if(!materiaActual.nombre){
+        var codigoMateria = horariosSimples[0].codigoMateria;
+        //obtain lista de materias iguales [{}{}]
+        var listaPrimeraMateria = obtenerMateriasPorCodigo (codigoMateria,horariosSimples);
+        //obtain materia
+        var materia = obtenerMateria (listaPrimeraMateria);
+        conjuntoMateria.push (materia);
+    }
+    return conjuntoMateria;
+}
+/**
+ * 
+ * @param {*} listaMateriaCodigo 
+ * lista json con materias 
+ * con el mismo codigo 
+ * RETORNO json con la materia y todos sus grupos
+ */
+function obtenerMateria (listaPrimeraMateria){
+    var res = {};
+    res.nombre = listaPrimeraMateria[0].nombre;
+    res.codigoMateria = listaPrimeraMateria[0].codigoMateria;
+    var grupos = [];
+    while(listaPrimeraMateria.length>0){
+        var numeroGrupo = listaPrimeraMateria[0].grupo;
+        var listaGrupoSimple = obtenerMateriasPorGrupo(numeroGrupo, listaPrimeraMateria);
+        
+        var grup = {};
+        grup.nombre = listaGrupoSimple[0].grupo;
+        if (listaGrupoSimple[0].docente)
+            grup.docente = listaGrupoSimple[0].docente;
+        else
+            grup.docente = listaGrupoSimple[1].docente;
 
+        var horarios = [];
+        while (listaGrupoSimple.length>0){
+            var dia = listaGrupoSimple.shift();
+            var hora = {};
+            hora.aula = dia.aula;
+            hora.hora = dia.hora;
+            hora.dia = dia.dia;
+            if(dia.auxiliar){
+                hora.auxiliar = dia.auxiliar;
+            }
+            horarios.push(hora);
+        }
+        grup.horarios = horarios;
+        grupos.push(grup);
+    }
+    res.grupos = grupos;
+
+    return res;
+    
+}
+
+function obtenerMateriasPorGrupo (numeroGrupo, listaMateriaCodigo){
+    var respuesta = [];
+    var band = true;
+    while (band && listaMateriaCodigo.length>0){
+        var simple = listaMateriaCodigo.shift();
+        if(simple.grupo === numeroGrupo){
+            respuesta.push(simple);
+        }else{
+            listaMateriaCodigo.unshift(simple);
+            band = false;
         }
     }
+    return respuesta;
+}
+
+/**
+ * 
+ * @param {*} codigoMateria
+ * codigo de materia a buscar 
+ * @param {*} horariosSimples
+ * lista json con todas las materias en el horario 
+ */
+function obtenerMateriasPorCodigo (codigoMateria, horariosSimples){
+    var respuesta = [];
+    var band = true;
+    while (band && horariosSimples.length>0){
+        var simple = horariosSimples.shift();
+        if(simple.codigoMateria === codigoMateria){
+            respuesta.push(simple);
+        }else{
+            horariosSimples.unshift(simple);
+            band = false;
+        }
+    }
+    return respuesta;
 }
 
 function getMateriaSimple (listaMateria){

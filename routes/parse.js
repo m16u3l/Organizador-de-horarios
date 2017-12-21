@@ -30,7 +30,7 @@ router.post("/parse",uploader.single('file_input'),function(solicitud,res){
         for (var i = 0; i < pdf.pdfInfo.numPages; i++) {
             crearPromesa(i+1);
         }
-
+        
         Promise.all(pagesPromises).then(function (pagesText) {
             var horarioFinal={},nombreCarrera,facultad,gestion,fecha,semestres=[];
             for(var i = 0;i < pagesText.length;i++){
@@ -68,14 +68,17 @@ router.post("/parse",uploader.single('file_input'),function(solicitud,res){
             horarioFinal.anio = gestion.split(" ")[2];
             horarioFinal.fechaEmision = fecha;
             horarioFinal.niveles = semestres;
-            console.log (horarioFinal);
+            //console.log (horarioFinal.niveles[0].materias[4].grupos[7].horarios);
+
+
+            if (true) {
+                res.render("vista-previa-carrera.jade");
+            } else {
+                res.render("error-parser-PDF.jade");
+            }
         });
 
-        if (true) {
-            res.render("vista-previa-carrera.jade");
-        } else {
-            res.render("error-parser-PDF.jade");
-        }
+        
 
     }, function (reason) {
         res.render("error-parser-PDF.jade");
