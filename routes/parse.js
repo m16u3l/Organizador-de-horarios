@@ -43,44 +43,48 @@ router.post("/parse", uploader.single('file_input'), function (solicitud, res) {
 
         Promise.all(pagesPromises).then(function (pagesText) {
             var horarioFinal = {}, nombreCarrera, facultad, gestion, fecha, semestres = [];
-            for (var i = 0; i < pagesText.length; i++) {
-                var palabrasPagina = pagesText[i].split("\n");
+            try {
+                for (var i = 0; i < pagesText.length; i++) {
+                    var palabrasPagina = pagesText[i].split("\n");
 
-                if (i === 0) {
-                    nombreCarrera = palabrasPagina.shift();
+                    if (i === 0) {
+                        nombreCarrera = palabrasPagina.shift();
 
-                    var nivel = palabrasPagina.shift();
+                        var nivel = palabrasPagina.shift();
 
-                    facultad = palabrasPagina.shift();
-                    gestion = palabrasPagina.shift();
-                    fecha = palabrasPagina.pop();
-                    fecha = palabrasPagina.pop();
+                        facultad = palabrasPagina.shift();
+                        gestion = palabrasPagina.shift();
+                        fecha = palabrasPagina.pop();
+                        fecha = palabrasPagina.pop();
 
-                    palabrasPagina.unshift(nivel);
-                } else {
-                    palabrasPagina.shift();
-                    var nivel = palabrasPagina.shift();
-                    palabrasPagina.shift();
-                    palabrasPagina.shift();
-                    palabrasPagina.pop();
-                    palabrasPagina.pop();
-                    palabrasPagina.unshift(nivel);
+                        palabrasPagina.unshift(nivel);
+                    } else {
+                        palabrasPagina.shift();
+                        var nivel = palabrasPagina.shift();
+                        palabrasPagina.shift();
+                        palabrasPagina.shift();
+                        palabrasPagina.pop();
+                        palabrasPagina.pop();
+                        palabrasPagina.unshift(nivel);
+                    }
+                    var jsonNivel = getNivel(palabrasPagina);
+                    if (jsonNivel.nivel !== undefined) {
+                        semestres.push(jsonNivel);
+                    }
                 }
-                var jsonNivel = getNivel(palabrasPagina);
-                if (jsonNivel.nivel !== undefined) {
-                    semestres.push(jsonNivel);
-                }
+                horarioFinal.nombre = nombreCarrera.split("(")[0];
+                horarioFinal.codigo = nombreCarrera.split("(")[1].split(")")[0];
+                horarioFinal.facultad = facultad.split("-")[0];
+                horarioFinal.gestion = gestion.split(" ")[0];
+                horarioFinal.anio = gestion.split(" ")[2];
+                horarioFinal.fechaEmision = fecha;
+                horarioFinal.niveles = semestres;
+            
+            } catch (err) {
+                res.render("error-parser-PDF.jade");
             }
-            horarioFinal.nombre = nombreCarrera.split("(")[0];
-            horarioFinal.codigo = nombreCarrera.split("(")[1].split(")")[0];
-            horarioFinal.facultad = facultad.split("-")[0];
-            horarioFinal.gestion = gestion.split(" ")[0];
-            horarioFinal.anio = gestion.split(" ")[2];
-            horarioFinal.fechaEmision = fecha;
-            horarioFinal.niveles = semestres;
 
-
-            //conn.collection('carreras').insert(horarioFinal);
+            conn.collection('carreras').insert(horarioFinal);
             //console.log(carrera);
             //console.log(horarioFinal);
 
