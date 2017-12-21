@@ -1,7 +1,3 @@
-var deleteArray = [];
-var updateArray = [];
-var newArray = [];
-
 var mongoose = require('mongoose');
 var promise = mongoose.connect('mongodb://localhost/organizadoraHorarios', {
     useMongoClient: true,
@@ -10,28 +6,32 @@ var promise = mongoose.connect('mongodb://localhost/organizadoraHorarios', {
 var conn = mongoose.connection;
 var carrera = mongoose.model('Carrera');
 
+
+var json = [];//[uno:[{calculo},{quimica} , dos:[] ,tres]
+var eliminados = [];
+var actualizados = [];
+var insertados = [];
+
+
 function check(entrante, actual) {
-    console.log("entre");
     if (actual != null) {
         if (entrante.codigo == actual.codigo) {
             checkNiveles(entrante.niveles, actual.niveles);
-        } else {
-            newArray = entrante;
-            updateArray = entrante;
         }
     } else {
         conn.collection('carreras').insert(entrante);
+        return { allDocument: true };
     }
-
+    json.eliminados = eliminados;
+    json.actualizados = actualizados;
+    json.insertados = insertados;
+    return json;
 }
 
 function checkNiveles(nivelesEntrante, nivelesActual) {
     for (var i in nivelesEntrante) {
         if (nivelesEntrante[i].nivel == nivelesActual[i].nivel) {
             checkMaterias(nivelesEntrante[i].materias, nivelesActual[i].materias);
-        } else {
-            //revisar
-            newArray = newArray + nivelesEntrante[i];
         }
     }
 }
@@ -52,23 +52,23 @@ function checkMaterias(materiasEntrante, materiasActual) {
                 if (materiaE.codigoMateria == materiaA.codigoMateria) {
                     encontre = true;
                     matchingA[j] = true;
-                    checkGrupos(materiaE.grupos, materiaA.grupos);
+                    checkGrupos(materiaE, materiaA);
                     break;
                 }
         }
-
-        if (!encontre) console.log("nuevo materia" + materiaE.nombre);
-
+        if (!encontre) {
+            insertados.push(materiaE);
+        }
     }
-
     for (var i in matchingA)
-        if (!matchingA[i])
-            console.log("eliminado materia" + materiasActual[i].nombre);
-
+        if (!matchingA[i]) {
+            eliminados.push(materiasActual[i]);
+        }
 }
 
-function checkGrupos(gruposEntrante, gruposActual) {
-
+function checkGrupos(materiaE, materiaA) {
+    var gruposEntrante = materiaE.grupos;
+    var gruposActual = materiaA.grupos;
     var encontre;
     var matchingA = [];
 
@@ -85,22 +85,20 @@ function checkGrupos(gruposEntrante, gruposActual) {
 
                     matchingA[j] = true;
                     encontre = true;
-                    if (checkHorarios(grupoE.horarios, grupoA.horarios))
-                        console.log("no modificado grupo" + grupoE.nombre + " " + grupoE.docente);
-                    else
-                        console.log("modificado grupo" + grupoE.nombre + " " + grupoE.docente);
+                    if (!checkHorarios(grupoE.horarios, grupoA.horarios))
+                        actualizados.push(materiaE);
                     break;
                 }
 
         }
 
-        if (!encontre) console.log("nuevo grupo" + grupoE.nombre);
+        //if (!encontre) console.log("nuevo grupo" + grupoE.nombre);
 
     }
 
-    for (var i in matchingA)
-        if (!matchingA[i])
-            console.log("eliminado grupo" + gruposActual[i].nombre);
+    //for (var i in matchingA)
+        //if (!matchingA[i])
+            //console.log("eliminado grupo" + gruposActual[i].nombre);
 
 }
 

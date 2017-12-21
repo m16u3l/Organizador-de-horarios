@@ -79,20 +79,24 @@ router.post("/parse", uploader.single('file_input'), function (solicitud, res) {
                 horarioFinal.anio = gestion.split(" ")[2];
                 horarioFinal.fechaEmision = fecha;
                 horarioFinal.niveles = semestres;
-
+                //var name = "LICENCIATURA EN INGENIERIA INFORMATICA";
                 carrera.findOne({ "nombre": horarioFinal.nombre }, function (error, documento) {
                     if (error) {
                         res.render("error-parser-PDF.jade");
                     } else {
                         var oldHorario = documento;
-                        console.log(oldHorario);
-                        check(horarioFinal, oldHorario);
+
+                        var cambios = check(horarioFinal, oldHorario);
+                        console.log (cambios.eliminados);
+                        console.log (cambios.actualizados);
+                        console.log (cambios.insertados);
                     }
                 });
+                
             } catch (err) {
                 res.render("error-parser-PDF.jade");
             }
-            res.render("vista-previa-carrera.jade");
+            res.render("cambios-preview.jade");
         });
 
 
