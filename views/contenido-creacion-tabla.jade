@@ -1,11 +1,6 @@
 extends barras-laterales.jade
 block contenido2
     .container-fluid#contenido
-      form(method="POST" action="/parse" style="margin-top:1.5em;" enctype="multipart/form-data")
-        div(class="form-group")
-          label File
-          input(type="file" name="file_input")
-          input(type="submit" class="btn btn-info" value="guardar")
       .row
         .col-lg-1.col-6
           button.mini-submenu-izquierdo.mini-submenu(onclick="openLeftMenu()") Lista de Materias
