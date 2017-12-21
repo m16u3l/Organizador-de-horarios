@@ -21,7 +21,7 @@ var contains = preprocesador.contains;
 var getNivel = preprocesador.getNivel;
 
 var validador = require("./validacion.js");
-var checkNiveles = validador.checkNiveles;
+var check = validador.check;
 
 router.post("/parse", uploader.single('file_input'), function (solicitud, res) {
 
@@ -80,10 +80,17 @@ router.post("/parse", uploader.single('file_input'), function (solicitud, res) {
             horarioFinal.niveles = semestres;
 
 
-            //conn.collection('carreras').insert(horarioFinal);
-            //console.log(carrera);
-            //console.log(horarioFinal);
+            carrera.findOne({ "nombre": horarioFinal.nombre }, function (error, documento) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    var oldHorario = documento;
+                    console.log(oldHorario);
+                    check(horarioFinal, oldHorario);
+                }
+            });
 
+            //conn.collection('carreras').insert(horarioFinal);
 
             if (true) {
                 res.render("vista-previa-carrera.jade");

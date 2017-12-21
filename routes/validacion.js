@@ -2,14 +2,25 @@ var deleteArray = [];
 var updateArray = [];
 var newArray = [];
 
+var mongoose = require('mongoose');
+var promise = mongoose.connect('mongodb://localhost/organizadoraHorarios', {
+    useMongoClient: true,
+});
+
+var conn = mongoose.connection;
+var carrera = mongoose.model('Carrera');
+
 function check(entrante, actual) {
     console.log("entre");
-
-    if (entrante.codigo == actual.codigo) {
-        checkNiveles(entrante.niveles, actual.niveles);
+    if (actual != null) {
+        if (entrante.codigo == actual.codigo) {
+            checkNiveles(entrante.niveles, actual.niveles);
+        } else {
+            newArray = entrante;
+            updateArray = entrante;
+        }
     } else {
-        newArray = entrante;
-        updateArray = entrante;
+        conn.collection('carreras').insert(entrante);
     }
 
 }
@@ -143,7 +154,7 @@ module.exports = {
     checkGrupos: checkGrupos,
 }
 
-module.exports.checkNiveles = checkNiveles;
+module.exports.check = check;
 
 //check(carrera, carrera1);
 
