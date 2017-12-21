@@ -13,3 +13,13 @@ function openRightMenu() {
 function closeRightMenu() {
   $('#rightMenu').toggle('slide');
 }
+function habilitarBoton() {
+  $('input[type=file]').change(function(){
+      if($('input[type=file]').val()==''){
+          $('#subir').attr('disabled',true)
+      } 
+      else{
+          $('#subir').attr('disabled',false);
+      }
+  });
+}
