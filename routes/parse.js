@@ -80,14 +80,12 @@ router.post("/parse", uploader.single('file_input'), function (solicitud, res) {
                 horarioFinal.fechaEmision = fecha;
                 horarioFinal.niveles = semestres;
             
+                conn.collection('carreras').insert(horarioFinal);
+                //console.log(carrera);
+                //console.log(horarioFinal);
             } catch (err) {
                 res.render("error-parser-PDF.jade");
             }
-
-            conn.collection('carreras').insert(horarioFinal);
-            //console.log(carrera);
-            //console.log(horarioFinal);
-
 
             if (true) {
                 res.render("vista-previa-carrera.jade");
