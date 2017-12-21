@@ -6,10 +6,14 @@ var multer = require('multer');
 var uploader = multer({dest: "./uploads"}); 
 
 var mongoose = require('mongoose');
+var promise = mongoose.connect('mongodb://localhost/organizadoraHorarios', {
+	useMongoClient: true,
+  });
 var PDFJS = require('pdfjs-dist');
 var fs = require('fs');
 var preprocesador = require("./preprocesamiento.js");
 
+var Carrera = mongoose.model('Carrera');
 var contains = preprocesador.contains;
 var getNivel = preprocesador.getNivel;
 
@@ -68,8 +72,6 @@ router.post("/parse",uploader.single('file_input'),function(solicitud,res){
             horarioFinal.anio = gestion.split(" ")[2];
             horarioFinal.fechaEmision = fecha;
             horarioFinal.niveles = semestres;
-            //console.log (horarioFinal.niveles[0].materias[4].grupos[7].horarios);
-
 
             if (true) {
                 res.render("vista-previa-carrera.jade");
