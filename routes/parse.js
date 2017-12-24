@@ -87,16 +87,14 @@ router.post("/parse", uploader.single('file_input'), function (solicitud, res) {
                         var oldHorario = documento;
 
                         var cambios = check(horarioFinal, oldHorario);
-                        console.log (cambios.eliminados);
-                        console.log (cambios.actualizados);
-                        console.log (cambios.insertados);
+                        res.render("cambios-preview.jade",{choques:cambios});
                     }
                 });
                 
             } catch (err) {
                 res.render("error-parser-PDF.jade");
             }
-            res.render("cambios-preview.jade");
+            
         });
 
 

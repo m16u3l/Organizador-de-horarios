@@ -7,7 +7,7 @@ var conn = mongoose.connection;
 var carrera = mongoose.model('Carrera');
 
 
-var json = [];//[uno:[{calculo},{quimica} , dos:[] ,tres]
+var json = {};//[uno:[{calculo},{quimica} , dos:[] ,tres]
 var eliminados = [];
 var actualizados = [];
 var insertados = [];
